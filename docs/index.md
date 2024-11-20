@@ -12,8 +12,6 @@ Your journey will take you through the complete Streamlit development lifecycle.
 
 ## Your Development Journey
 
-Here's your bulleted list with emojis that match each section:
-
 🚀 **Start with Streamlit Local Development**
 
 - Create your first interactive web application with [Streamlit](https://streamlit.io){:target=_blank}'s components
