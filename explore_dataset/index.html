@@ -19,8 +19,8 @@
         <link rel="next" href="../interactive_features/">
       
       
-      <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.45">
+      <link rel="icon" href="../assets/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.46">
     
     
       
@@ -28,7 +28,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.0253249f.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.6f8fc17f.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
@@ -41,12 +41,6 @@
       
     
     
-      
-        
-        
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CFira+Code:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"Roboto";--md-code-font:"Fira Code"}</style>
       
     
     
@@ -67,7 +61,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo">
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="indigo">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -94,8 +88,7 @@
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href=".." title="Bootstrapping Your Transition from Streamlit OSS to Streamlit in Snowflake (SiS)" class="md-header__button md-logo" aria-label="Bootstrapping Your Transition from Streamlit OSS to Streamlit in Snowflake (SiS)" data-md-component="logo">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+  <img src="../assets/snowflake-logo-blue.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -152,8 +145,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href=".." title="Bootstrapping Your Transition from Streamlit OSS to Streamlit in Snowflake (SiS)" class="md-nav__button md-logo" aria-label="Bootstrapping Your Transition from Streamlit OSS to Streamlit in Snowflake (SiS)" data-md-component="logo">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+  <img src="../assets/snowflake-logo-blue.svg" alt="logo">
 
     </a>
     Bootstrapping Your Transition from Streamlit OSS to Streamlit in Snowflake (SiS)
@@ -622,14 +614,14 @@
 
 
 <h1 id="exploring-the-penguins-dataset-with-streamlit">Exploring the Penguins Dataset with Streamlit<a class="headerlink" href="#exploring-the-penguins-dataset-with-streamlit" title="Permanent link">&para;</a></h1>
-<p>In this chapter, we'll explore the Penguins dataset{:target=_blank} and use it as a base to build an interactive ML application using Streamlit.</p>
+<p>In this chapter, we'll explore the [Penguins dataset](https://github.com/dataprofessor/data/blob/master/penguins_cleaned.csv{:target=_blank} and use it as a base to build an interactive ML application using Streamlit.</p>
 <p>By the end of this chapter you will,</p>
 <ul class="task-list">
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Loading, preprocessing, and preparing the dataset for visualization</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Using Streamlit Expander to display:<ul>
 <li>Dataset Information</li>
 <li>Machine Learning Model Features (<strong>X</strong>)</li>
-<li>Prediction Target(<code>species</code>) variable (<strong>y</strong>)</li>
+<li>Prediction Target (<code>species</code>) variable (<strong>y</strong>)</li>
 </ul>
 </li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Creating interactive scatter plots to identify patterns and relationships</li>
@@ -667,7 +659,7 @@
 </span></span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11"></a><span class="hll"><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/penguins_cleaned.csv&quot;</span><span class="p">)</span>
 </span></span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12"></a><span class="hll"><span class="n">df</span>
 </span></span></code></pre></div></td></tr></table></div>
-Stage, commit and push the code to the repository. In few seconds you should notice that your application on Streamlit Community Cloud refreshed with all your changes.</p>
+Stage, commit and push the code to the repository. In a few seconds you’ll see that your deployed app on the Streamlit Community Cloud refreshes as the code changes.</p>
 <h2 id="application-overview">Application Overview<a class="headerlink" href="#application-overview" title="Permanent link">&para;</a></h2>
 <p>As part of this machine learning application, we will be building a simple classification model to predict Penguin species (<strong>y</strong>) using input variables (<strong>X</strong>). Using Streamlit's interactive widgets, we'll display these variables to make our application user-friendly and intuitive.</p>
 <p>This classification model will help us categorize penguins into their respective species based on their physical characteristics. The input variables and target variable will be presented through Streamlit's interface, allowing users to easily interact with and understand the prediction process.</p>
@@ -703,7 +695,7 @@ Stage, commit and push the code to the repository. In few seconds you should not
 </span></span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14"></a><span class="hll">    <span class="n">df</span>
 </span></span></code></pre></div></td></tr></table></div>
 <h2 id="displaying-the-variables">Displaying the Variables<a class="headerlink" href="#displaying-the-variables" title="Permanent link">&para;</a></h2>
-<p>Let us create and display the input features(<strong>X</strong>) and target(<strong>y</strong>), edit and update the <code>$TUTORIAL_HOME/streamlit_app.py</code> with the following code,</p>
+<p>Let us create and display the input features (<strong>X</strong>) and target (<strong>y</strong>), edit and update the <code>$TUTORIAL_HOME/streamlit_app.py</code> with the following code,</p>
 <div class="language-py highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">streamlit_app.py</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-3-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-3-3"> 3</a></span>
