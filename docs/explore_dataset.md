@@ -1,6 +1,6 @@
 # Exploring the Penguins Dataset with Streamlit
 
-In this chapter, we'll explore the Penguins dataset{:target=_blank} and use it as a base to build an interactive ML application using Streamlit.
+In this chapter, we'll explore the [Penguins dataset](https://github.com/dataprofessor/data/blob/master/penguins_cleaned.csv{:target=_blank} and use it as a base to build an interactive ML application using Streamlit.
 
 By the end of this chapter you will,
 
@@ -8,7 +8,7 @@ By the end of this chapter you will,
 - [x] Using Streamlit Expander to display:
     * Dataset Information
     * Machine Learning Model Features (**X**)
-    * Prediction Target(`species`) variable (**y**)
+    * Prediction Target (`species`) variable (**y**)
 - [x] Creating interactive scatter plots to identify patterns and relationships
 
 ## Download Dataset
@@ -40,7 +40,7 @@ st.write("Welcome to world of Machine Learning with Streamlit.")
 df = pd.read_csv("data/penguins_cleaned.csv")
 df
 ```
-Stage, commit and push the code to the repository. In few seconds you should notice that your application on Streamlit Community Cloud refreshed with all your changes.
+Stage, commit and push the code to the repository. In a few seconds you’ll see that your deployed app on the Streamlit Community Cloud refreshes as the code changes.
 
 ## Application Overview
 
@@ -73,7 +73,7 @@ with st.expander("Data"):
 
 ## Displaying the Variables
 
-Let us create and display the input features(**X**) and target(**y**), edit and update the `$TUTORIAL_HOME/streamlit_app.py` with the following code,
+Let us create and display the input features (**X**) and target (**y**), edit and update the `$TUTORIAL_HOME/streamlit_app.py` with the following code,
 
 ```py title="streamlit_app.py" linenums="1" hl_lines="16-22"
 import streamlit as st

@@ -1,6 +1,6 @@
 # Setup
 
-By the end of this chapter, you will have successfully created and set up a GitHub project using the [Stream Starter Kit](https://github.com/streamlit/app-starter-kit){:target=_blank}. This starter kit provides a solid foundation for building interactive web applications with Streamlit, a powerful Python library for creating data-driven apps.
+By the end of this chapter, you will have successfully created and set up a GitHub project using the [Streamlit Starter Kit](https://github.com/streamlit/app-starter-kit){:target=_blank}. This starter kit provides a solid foundation for building interactive web applications with Streamlit, a powerful Python library for creating data-driven apps.
 
 In this chapter, we will guide you through the following steps:
 
@@ -19,7 +19,7 @@ To follow along with this tutorial and set up your project successfully, you'll 
 
 * [Docker for Desktop](https://www.docker.com/products/docker-desktop/){:target=_blank}
 
-* A GitHub account: If you don't already have a GitHub account, you'll need to create one. 
+* A [GitHub account](https://github.com/signup){:target=_blank}: If you don't already have a GitHub account, you'll need to create one. 
 
 * [Miniconda](https://docs.anaconda.com/miniconda/){:target=_blank}
 
@@ -27,7 +27,7 @@ To follow along with this tutorial and set up your project successfully, you'll 
 
 * [Snowflake CLI](https://docs.snowflake.com/en/developer-guide/snowflake-cli/index){:target=_blank}
 
-* And last but not the least latest Google Chrome browser
+* And last but not the least latest [Google Chrome](https://www.google.com/chrome/index.html){:target=_blank} browser
 
 Please ensure you have all these tools and accounts set up before proceeding with the tutorial. In the following sections, we'll guide you through the process of setting up your GitHub project using the Streamlit Starter Kit.
 
