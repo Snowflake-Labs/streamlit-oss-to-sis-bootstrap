@@ -12,11 +12,10 @@ extra_css:
 theme:
     name: material
     palette:
-        primary: custom
-
-    font:
-        text: Roboto
-        code: Fira Code
+        primary: white
+    logo: assets/snowflake-logo-blue.svg
+    favicon: assets/favicon.ico
+    font: false
     features:
         - content.code.copy
         - content.code.select
