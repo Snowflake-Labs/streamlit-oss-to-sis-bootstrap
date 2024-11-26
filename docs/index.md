@@ -1,7 +1,7 @@
 # Bootstrapping Your Transition from Streamlit OSS to Streamlit in Snowflake(SiS)
 
 ## Get Ready to Build!
-Ready to transform a simple Streamlit application into an enterprise-grade solution in to SiS? In this hands-on tutorial, you'll explore Streamlit's versatility while building an interactive data application. Using a Machine Learning example, you'll discover how easily Streamlit can evolve from your local machine to a fully integrated Snowflake application.
+Ready to transform a simple Streamlit application into an enterprise-grade solution on SiS? In this hands-on tutorial, you'll explore Streamlit's versatility while building an interactive data application. Using a Machine Learning example, you'll discover how easily Streamlit can evolve from your local machine to a fully integrated Snowflake application.
 
 ## What You'll Build
 
@@ -48,10 +48,9 @@ Your journey will take you through the complete Streamlit development lifecycle.
 
 Watch your Streamlit application evolve:
 
-- From your laptop to the cloud
-- Through Snowflake integration
-- Into native Snowflake deployment
-- With surprisingly few code changes
+- Going from local development to cloud deployment
+- Connect to Snowflake’s data platform
+- Deploy natively within Snowflake with minimal code changes
 
 ## Your Learning Goals
 
