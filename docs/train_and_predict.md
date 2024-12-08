@@ -14,8 +14,21 @@ In this chapter, we will:
 As part of displaying the predictions we will use the following Streamlit components to make the output aesthetically appealing,
 
 - [Progress Column Config](https://docs.streamlit.io/develop/api-reference/data/st.column_config/st.column_config.progresscolumn)
-- [Sucess Message](https://docs.streamlit.io/develop/api-reference/status/st.success)
+- [Success Message](https://docs.streamlit.io/develop/api-reference/status/st.success)
 - [Container](https://docs.streamlit.io/develop/api-reference/layout/st.container)
+
+Update `$TUTORIAL_HOME/requirements.txt` to be like
+
+```
+streamlit>=1.26.0
+scikit-learn
+```
+
+Update the local Python Virtual Environment to add the `scikit-learn` package,
+
+```shell
+pip install -r requirements.txt
+```
 
 Edit and update the `$TUTORIAL_HOME/streamlit_app.py` with the following code,
 

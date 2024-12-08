@@ -58,7 +58,13 @@ snow object create schema \
   --database='st_ml_app'
 ```
 
-Download and import the [notebook](https://github.com/Snowflake-Labs/streamlit-oss-to-sis-bootstrap/blob/main/notebooks/sis_setup.ipynb){:target=_blank} and follow the instructions on the notebook to prepare the environment for deployment.
+## Using Notebook
+
+Here's my suggested revision to make the text clearer and more precise:
+
+We will need a few more objects and will need to ingest the penguins data into our Snowflake database `st_ml_app`, specifically in the schema `data` and into a table named `penguins`. We will use [Snowflake Notebooks](https://www.snowflake.com/en/data-cloud/notebooks/){:target=_blank} for this purpose.
+
+Download and import this [notebook](https://github.com/Snowflake-Labs/streamlit-oss-to-sis-bootstrap/blob/main/notebooks/sis_setup.ipynb){:target=_blank} and follow its instructions to prepare the environment for deployment.
 
 ## Deploying the App
 
@@ -75,8 +81,6 @@ snow init sis --template example_streamlit
 
 
 ### Update the App 
-
-__TODO__: Note on Copy
 
 Edit and update the `$TUTORIAL_HOME/sis/streamlit_app.py` with,
 
@@ -374,6 +378,23 @@ snow streamlit deploy --replace \
 ```
 
 There you go we have seamlessly deployed the application to SiS with a very little effort.
+
+## Undeploying the Application
+
+To drop the application run:
+
+```shell
+snow streamlit drop streamlit_penguin \
+  --database='st_ml_app'  --schema='apps'
+```
+
+## Cleanup 
+
+To cleanup all resources created in this tutorial including the notebook run:
+
+```shell
+snow object drop database st_ml_app
+```
 
 ## Summary
 This chapter guided you through the process of transforming a locally running Streamlit application into a production-ready deployment within Snowflake. You learned the essential modifications needed for Snowflake compatibility, understood the configuration requirements, and mastered the deployment process. You now have a fully functional Streamlit application running in Snowflake's secure environment, accessible to your organization's users through Snowflake's interface.
