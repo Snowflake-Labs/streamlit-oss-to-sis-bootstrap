@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="../assets/favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.46">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.47">
     
     
       
@@ -471,6 +471,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#using-notebook" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using Notebook
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#deploying-the-app" class="md-nav__link">
     <span class="md-ellipsis">
       Deploying the App
@@ -518,6 +527,24 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#undeploying-the-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      Undeploying the Application
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cleanup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cleanup
+    </span>
+  </a>
   
 </li>
       
@@ -635,6 +662,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#using-notebook" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using Notebook
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#deploying-the-app" class="md-nav__link">
     <span class="md-ellipsis">
       Deploying the App
@@ -682,6 +718,24 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#undeploying-the-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      Undeploying the Application
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cleanup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cleanup
+    </span>
+  </a>
   
 </li>
       
@@ -753,7 +807,10 @@
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span><span class="nv">name</span><span class="o">=</span><span class="s1">&#39;notebooks&#39;</span><span class="w"> </span><span class="nv">comment</span><span class="o">=</span><span class="s1">&#39;Will hold all notebooks&#39;</span><span class="w"> </span><span class="se">\</span>
 </span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">  </span>--database<span class="o">=</span><span class="s1">&#39;st_ml_app&#39;</span>
 </span></code></pre></div>
-<p>Download and import the <a href="https://github.com/Snowflake-Labs/streamlit-oss-to-sis-bootstrap/blob/main/notebooks/sis_setup.ipynb" target="_blank">notebook</a> and follow the instructions on the notebook to prepare the environment for deployment.</p>
+<h2 id="using-notebook">Using Notebook<a class="headerlink" href="#using-notebook" title="Permanent link">&para;</a></h2>
+<p>Here's my suggested revision to make the text clearer and more precise:</p>
+<p>We will need a few more objects and will need to ingest the penguins data into our Snowflake database <code>st_ml_app</code>, specifically in the schema <code>data</code> and into a table named <code>penguins</code>. We will use <a href="https://www.snowflake.com/en/data-cloud/notebooks/" target="_blank">Snowflake Notebooks</a> for this purpose.</p>
+<p>Download and import this <a href="https://github.com/Snowflake-Labs/streamlit-oss-to-sis-bootstrap/blob/main/notebooks/sis_setup.ipynb" target="_blank">notebook</a> and follow its instructions to prepare the environment for deployment.</p>
 <h2 id="deploying-the-app">Deploying the App<a class="headerlink" href="#deploying-the-app" title="Permanent link">&para;</a></h2>
 <h3 id="create-streamlit-project">Create Streamlit Project<a class="headerlink" href="#create-streamlit-project" title="Permanent link">&para;</a></h3>
 <p>Create a Snowflake project from a template, to make things easy and clean we will create the application in <code>$TUTORIAL_HOME/sis</code>.</p>
@@ -764,7 +821,6 @@
 <p>The application init uses the <code>example_streamlit</code> template from  <a href="https://github.com/snowflakedb/snowflake-cli-templates" target="_blank">https://github.com/snowflakedb/snowflake-cli-templates</a></p>
 </div>
 <h3 id="update-the-app">Update the App<a class="headerlink" href="#update-the-app" title="Permanent link">&para;</a></h3>
-<p><strong>TODO</strong>: Note on Copy</p>
 <p>Edit and update the <code>$TUTORIAL_HOME/sis/streamlit_app.py</code> with,</p>
 <div class="language-py highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">streamlit_app.py</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">  1</a></span>
 <span class="normal"><a href="#__codelineno-4-2">  2</a></span>
@@ -1291,6 +1347,15 @@ Run the following command to deploy the Streamlit application to Snowflake,</p>
 </span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">  </span>--database<span class="o">=</span><span class="s1">&#39;st_ml_app&#39;</span><span class="w">  </span>--schema<span class="o">=</span><span class="s1">&#39;apps&#39;</span>
 </span></code></pre></div>
 <p>There you go we have seamlessly deployed the application to SiS with a very little effort.</p>
+<h2 id="undeploying-the-application">Undeploying the Application<a class="headerlink" href="#undeploying-the-application" title="Permanent link">&para;</a></h2>
+<p>To drop the application run:</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>snow<span class="w"> </span>streamlit<span class="w"> </span>drop<span class="w"> </span>streamlit_penguin<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">  </span>--database<span class="o">=</span><span class="s1">&#39;st_ml_app&#39;</span><span class="w">  </span>--schema<span class="o">=</span><span class="s1">&#39;apps&#39;</span>
+</span></code></pre></div>
+<h2 id="cleanup">Cleanup<a class="headerlink" href="#cleanup" title="Permanent link">&para;</a></h2>
+<p>To cleanup all resources created in this tutorial including the notebook run:</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>snow<span class="w"> </span>object<span class="w"> </span>drop<span class="w"> </span>database<span class="w"> </span>st_ml_app
+</span></code></pre></div>
 <h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
 <p>This chapter guided you through the process of transforming a locally running Streamlit application into a production-ready deployment within Snowflake. You learned the essential modifications needed for Snowflake compatibility, understood the configuration requirements, and mastered the deployment process. You now have a fully functional Streamlit application running in Snowflake's secure environment, accessible to your organization's users through Snowflake's interface.</p>
 <blockquote>
