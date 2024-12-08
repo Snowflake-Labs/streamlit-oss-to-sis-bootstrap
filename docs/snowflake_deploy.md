@@ -76,8 +76,6 @@ snow init sis --template example_streamlit
 
 ### Update the App 
 
-__TODO__: Note on Copy
-
 Edit and update the `$TUTORIAL_HOME/sis/streamlit_app.py` with,
 
 ```py title="streamlit_app.py" linenums="1" hl_lines="4-7 10-24 24 34-45"
