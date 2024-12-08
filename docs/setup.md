@@ -44,7 +44,7 @@ cd <directory where you want to create your project>
 Create the application folder for the rest of the demo we will call this as `st-ml-app` and for easy reference we will export to an environment variable named `$TUTORIAL_HOME`,
 
 ```shell
-export TUTORIAL_HOME='st-ml-app'
+export TUTORIAL_HOME="$PWD/st-ml-app"
 mkdir -p $TUTORIAL_HOME
 cd $TUTORIAL_HOME
 ```
