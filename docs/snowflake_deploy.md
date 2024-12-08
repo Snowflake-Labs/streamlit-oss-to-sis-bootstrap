@@ -379,6 +379,23 @@ snow streamlit deploy --replace \
 
 There you go we have seamlessly deployed the application to SiS with a very little effort.
 
+## Undeploying the Application
+
+To drop the application run:
+
+```shell
+snow streamlit drop streamlit_penguin \
+  --database='st_ml_app'  --schema='apps'
+```
+
+## Cleanup 
+
+To cleanup all resources created in this tutorial including the notebook run:
+
+```shell
+snow object drop database st_ml_app
+```
+
 ## Summary
 This chapter guided you through the process of transforming a locally running Streamlit application into a production-ready deployment within Snowflake. You learned the essential modifications needed for Snowflake compatibility, understood the configuration requirements, and mastered the deployment process. You now have a fully functional Streamlit application running in Snowflake's secure environment, accessible to your organization's users through Snowflake's interface.
 
