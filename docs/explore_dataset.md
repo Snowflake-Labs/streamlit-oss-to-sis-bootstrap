@@ -1,6 +1,6 @@
 # Exploring the Penguins Dataset with Streamlit
 
-In this chapter, we'll explore the [Penguins dataset](https://github.com/dataprofessor/data/blob/master/penguins_cleaned.csv{:target=_blank} and use it as a base to build an interactive ML application using Streamlit.
+In this chapter, we'll explore the [Penguins dataset](https://github.com/dataprofessor/data/blob/master/penguins_cleaned.csv){:target=_blank} and use it as a base to build an interactive ML application using Streamlit.
 
 By the end of this chapter you will,
 
