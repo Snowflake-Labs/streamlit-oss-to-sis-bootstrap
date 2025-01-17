@@ -492,7 +492,7 @@ snow spcs service list-endpoints st_ml_app  \
   --role='st_ml_app' --format=json | jq '.[0].ingress_url'
 ```
 
-Open the application using the URL from the previous command, authenticate to access the Penguins ML application.
+Open the application by navigating to the URL provided in the previous command, then authenticate to access the Penguins ML application.
 
 ## Cleanup
 To clean up the services created as part of this demo run the cell `spcs_cleanup` on the notebook.
