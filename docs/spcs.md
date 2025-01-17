@@ -4,7 +4,7 @@ In the previous chapter we learnt how to deploy Streamlit application in Snowfla
 
 In this chapter, we will:
 
-- [x] Add a Dockerfile file containerize the application
+- [x] Add a Dockerfile file to containerize the application
 - [x] Create Compute Pool
 - [x] Create Image Repository
 - [x] Build and Deploy the application
@@ -14,22 +14,22 @@ In this chapter, we will:
 - You have completed the previous chapter on [Deploying to SiS](./snowflake_deploy.md)
 - Snow CLI is installed and configured
 - [Docker](https://www.docker.com/products/docker-desktop/) is installed and configured
-- [Notebook](./snowflake_deploy.md#using-notebook) has been imported into your Snowflake Account and ready to for use.
+- [Notebook](./snowflake_deploy.md#using-notebook) has been imported into your Snowflake Account and ready to use.
 
 ## Preparing for SPCS Deployment
 
-To be able to deploy our Penguins ML app as container onto SPCS we need to 
+To be able to deploy our Penguins ML app as a container onto SPCS we need to 
 
 - Create compute pool
-- Create image repository
-- Build and Push the container image to image repository
+- Create an image repository
+- Build and Push the container image to the image repository
 - Deploy service
 
 ### Create Compute Pool
 
-All SPCS containers run using a required size of compute, check the [documentation](https://docs.snowflake.com/en/developer-guide/snowpark-container-services/working-with-compute-pool) for more details on available compute pool sizes.
+All SPCS containers run using the required compute size, check the [documentation](https://docs.snowflake.com/en/developer-guide/snowpark-container-services/working-with-compute-pool) for more details on available compute pool sizes.
 
-Let us create one for this tutorial.
+Let us create one for this tutorial:
 
 ```shell
 export ST_ML_APP_COMPUTE_POOL=st_ml_app_xs
@@ -37,13 +37,13 @@ snow spcs compute-pool create $ST_ML_APP_COMPUTE_POOL \
   --family CPU_X64_XS
 ```
 
-Let us describe the created compute pool,
+Let us describe the created compute pool:
 
 ```shell
 snow spcs compute-pool describe $ST_ML_APP_COMPUTE_POOL --format=json
 ```
 
-The compute pool is another Snowflake resource, it has all the usual operations like list, describe etc., check the [cheatsheet](https://github.com/Snowflake-Labs/sf-cheatsheets/blob/main/snow-cli-spcs-cheatsheet.md){:target=_blank}.
+The compute pool is another Snowflake resource, it has all the usual operations like list, describe, etc., check the [cheatsheet](https://github.com/Snowflake-Labs/sf-cheatsheets/blob/main/snow-cli-spcs-cheatsheet.md){:target=_blank} for more information.
 
 
 ### Creating SPCS Objects 
@@ -76,7 +76,7 @@ export IMAGE_REGISTRY_URL=$(snow spcs image-registry url)
 
 #### Create Image Repository
 
-Create an image repository if not exists,
+Create an image repository if not exist,
 
 ```shell
 snow spcs image-repository create st_ml_apps \
@@ -378,7 +378,7 @@ st.success(p_cols[prediction[0]])
 #### Building the Application Container Image
 
 !!!IMPORTANT
-    This uses the `docker` daemon, if you have not installed please install [Docker](https://www.docker.com/products/docker-desktop/) before proceeding further.
+    This uses the `docker` daemon, if you have not installed this yet, please install [Docker](https://www.docker.com/products/docker-desktop/) before proceeding further.
 
 
 Let us login to the SPCS image registry,
@@ -387,7 +387,7 @@ Let us login to the SPCS image registry,
 snow spcs image-registry login
 ```
 
-Let us build, tag and push the `$IMAGE_REPO/penguins_app`  to the `$IMAGE_REGISTRY_URL` ,
+Let us build, tag and push the `$IMAGE_REPO/penguins_app`  to the `$IMAGE_REGISTRY_URL`,
 
 ```shell
 docker build --push  --platform=linux/amd64 -t $IMAGE_REPO/penguins_app .
@@ -402,7 +402,7 @@ snow spcs image-repository list-images st_ml_apps \
   --role='st_ml_app'
 ```
 
-Let us export the image FQN to a variable to easy reference and substitution,
+Let us export the image FQN to a variable for easy reference and substitution,
 
 ```shell
 export IMAGE_REPO_NAME="$IMAGE_REPO/penguins_app"
@@ -468,7 +468,7 @@ snow spcs service create st_ml_app \
 Check service status,
 
 !!!NOTE
-    It will take few minutes for the service to be in `RUNNING` status
+    It will take a few minutes for the service to be in `RUNNING` status:
 
 ```shell
 snow spcs service describe st_ml_app \
