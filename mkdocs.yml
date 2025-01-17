@@ -36,6 +36,7 @@ nav:
           - "Training and Prediction": train_and_predict.md
     - "Streamlit in  Snowflake":
           - "Deploy to Snowflake": snowflake_deploy.md
+          - "Snowpark Container Services": spcs.md
     - "Summary": "summary.md"
 markdown_extensions:
     - toc:
