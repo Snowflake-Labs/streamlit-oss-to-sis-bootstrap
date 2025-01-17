@@ -16,11 +16,11 @@
         <link rel="prev" href="../train_and_predict/">
       
       
-        <link rel="next" href="../summary/">
+        <link rel="next" href="../spcs/">
       
       
       <link rel="icon" href="../assets/favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.47">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.49">
     
     
       
@@ -566,6 +566,27 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spcs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Snowpark Container Services
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1048,16 +1069,16 @@
 <span class="normal"><a href="#__codelineno-4-224">224</a></span>
 <span class="normal"><a href="#__codelineno-4-225">225</a></span>
 <span class="normal"><a href="#__codelineno-4-226">226</a></span>
-<span class="normal"><a href="#__codelineno-4-227">227</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="kn">import</span> <span class="nn">streamlit</span> <span class="k">as</span> <span class="nn">st</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="kn">import</span> <span class="nn">os</span>
+<span class="normal"><a href="#__codelineno-4-227">227</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">streamlit</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">st</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3"></a>
-</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="hll"><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
-</span></span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="hll"><span class="kn">from</span> <span class="nn">snowflake.snowpark.session</span> <span class="kn">import</span> <span class="n">Session</span>
-</span></span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6"></a><span class="hll"><span class="kn">from</span> <span class="nn">snowflake.snowpark.functions</span> <span class="kn">import</span> <span class="n">col</span>
-</span></span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7"></a><span class="hll"><span class="kn">from</span> <span class="nn">snowflake.snowpark.types</span> <span class="kn">import</span> <span class="n">StringType</span><span class="p">,</span> <span class="n">DecimalType</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="hll"><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+</span></span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="hll"><span class="kn">from</span><span class="w"> </span><span class="nn">snowflake.snowpark.session</span><span class="w"> </span><span class="kn">import</span> <span class="n">Session</span>
+</span></span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6"></a><span class="hll"><span class="kn">from</span><span class="w"> </span><span class="nn">snowflake.snowpark.functions</span><span class="w"> </span><span class="kn">import</span> <span class="n">col</span>
+</span></span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7"></a><span class="hll"><span class="kn">from</span><span class="w"> </span><span class="nn">snowflake.snowpark.types</span><span class="w"> </span><span class="kn">import</span> <span class="n">StringType</span><span class="p">,</span> <span class="n">DecimalType</span>
 </span></span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8"></a>
 </span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9"></a>
-</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10"></a><span class="hll"><span class="k">def</span> <span class="nf">get_active_session</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Session</span><span class="p">:</span>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10"></a><span class="hll"><span class="k">def</span><span class="w"> </span><span class="nf">get_active_session</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Session</span><span class="p">:</span>
 </span></span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11"></a><span class="hll"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Create or get new Snowflake Session.</span>
 </span></span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12"></a><span class="hll"><span class="sd">       When running locally it uses the SNOWFLAKE_CONNECTION_NAME environment variable to get the connection name and when running in SiS it uses the context connection.</span>
 </span></span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13"></a><span class="hll"><span class="sd">    &quot;&quot;&quot;</span>
@@ -1210,7 +1231,7 @@
 </span><span id="__span-4-160"><a id="__codelineno-4-160" name="__codelineno-4-160"></a><span class="p">}</span>
 </span><span id="__span-4-161"><a id="__codelineno-4-161" name="__codelineno-4-161"></a>
 </span><span id="__span-4-162"><a id="__codelineno-4-162" name="__codelineno-4-162"></a>
-</span><span id="__span-4-163"><a id="__codelineno-4-163" name="__codelineno-4-163"></a><span class="k">def</span> <span class="nf">target_encoder</span><span class="p">(</span><span class="n">val_y</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+</span><span id="__span-4-163"><a id="__codelineno-4-163" name="__codelineno-4-163"></a><span class="k">def</span><span class="w"> </span><span class="nf">target_encoder</span><span class="p">(</span><span class="n">val_y</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
 </span><span id="__span-4-164"><a id="__codelineno-4-164" name="__codelineno-4-164"></a>    <span class="k">return</span> <span class="n">target_mapper</span><span class="p">[</span><span class="n">val_y</span><span class="p">]</span>
 </span><span id="__span-4-165"><a id="__codelineno-4-165" name="__codelineno-4-165"></a>
 </span><span id="__span-4-166"><a id="__codelineno-4-166" name="__codelineno-4-166"></a>
@@ -1407,13 +1428,13 @@ Run the following command to deploy the Streamlit application to Snowflake,</p>
         
         
           
-          <a href="../summary/" class="md-footer__link md-footer__link--next" aria-label="Next: Summary">
+          <a href="../spcs/" class="md-footer__link md-footer__link--next" aria-label="Next: Snowpark Container Services">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Summary
+                Snowpark Container Services
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -1452,7 +1473,7 @@ Run the following command to deploy the Streamlit application to Snowflake,</p>
     <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy", "content.code.select", "content.code.annotate", "navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.footer", "toc.follow"], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.83f73b43.min.js"></script>
+      <script src="../assets/javascripts/bundle.88dd0f4e.min.js"></script>
       
     
   </body>

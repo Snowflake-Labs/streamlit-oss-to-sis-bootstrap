@@ -1,0 +1,1706 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Bootstrap your transition from Streamlit OSS to Streamlit in Snowflake (SiS) with this step-by-step tutorial and starter template. Migrate your Streamlit app to Snowflake's powerful and scalable platform, and leverage enterprise-grade features with ease.">
+      
+      
+      
+        <link rel="canonical" href="https://snowflake-labs.github.io/streamlit-oss-to-sis-bootstrap/spcs/">
+      
+      
+        <link rel="prev" href="../snowflake_deploy/">
+      
+      
+        <link rel="next" href="../summary/">
+      
+      
+      <link rel="icon" href="../assets/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.49">
+    
+    
+      
+        <title>Snowpark Container Services - Bootstrapping Your Transition from Streamlit OSS to Streamlit in Snowflake (SiS)</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.6f8fc17f.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#deploying-streamlit-applications-using-snowpark-container-services" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Bootstrapping Your Transition from Streamlit OSS to Streamlit in Snowflake (SiS)" class="md-header__button md-logo" aria-label="Bootstrapping Your Transition from Streamlit OSS to Streamlit in Snowflake (SiS)" data-md-component="logo">
+      
+  <img src="../assets/snowflake-logo-blue.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Bootstrapping Your Transition from Streamlit OSS to Streamlit in Snowflake (SiS)
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Snowpark Container Services
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Bootstrapping Your Transition from Streamlit OSS to Streamlit in Snowflake (SiS)" class="md-nav__button md-logo" aria-label="Bootstrapping Your Transition from Streamlit OSS to Streamlit in Snowflake (SiS)" data-md-component="logo">
+      
+  <img src="../assets/snowflake-logo-blue.svg" alt="logo">
+
+    </a>
+    Bootstrapping Your Transition from Streamlit OSS to Streamlit in Snowflake (SiS)
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../setup/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Environment Setup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deploy_to_streamlit_cloud/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deploy to Streamlit Cloud
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Penguins App
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Penguins App
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../explore_dataset/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exploring Dataset
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interactive_features/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interact with Application
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data_preparation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Data Preparation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../train_and_predict/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Training and Prediction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Streamlit in  Snowflake
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Streamlit in  Snowflake
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../snowflake_deploy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deploy to Snowflake
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Snowpark Container Services
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Snowpark Container Services
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#preparing-for-spcs-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Preparing for SPCS Deployment
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Preparing for SPCS Deployment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-compute-pool" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create Compute Pool
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-spcs-objects" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating SPCS Objects
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#building-and-pushing-the-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      Building and Pushing the Image
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Building and Pushing the Image">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-image-repository" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create Image Repository
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-the-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      Update the App
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#building-the-application-container-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      Building the Application Container Image
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deploy-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deploy Service
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Deploy Service">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#service-status" class="md-nav__link">
+    <span class="md-ellipsis">
+      Service Status
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#service-endpoints" class="md-nav__link">
+    <span class="md-ellipsis">
+      Service Endpoints
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cleanup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cleanup
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="References">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#quickstarts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quickstarts
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Documentation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tutorials" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tutorials
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../summary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Summary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#preparing-for-spcs-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Preparing for SPCS Deployment
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Preparing for SPCS Deployment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-compute-pool" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create Compute Pool
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-spcs-objects" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating SPCS Objects
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#building-and-pushing-the-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      Building and Pushing the Image
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Building and Pushing the Image">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-image-repository" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create Image Repository
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-the-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      Update the App
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#building-the-application-container-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      Building the Application Container Image
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deploy-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deploy Service
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Deploy Service">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#service-status" class="md-nav__link">
+    <span class="md-ellipsis">
+      Service Status
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#service-endpoints" class="md-nav__link">
+    <span class="md-ellipsis">
+      Service Endpoints
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cleanup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cleanup
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="References">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#quickstarts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quickstarts
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Documentation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tutorials" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tutorials
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="deploying-streamlit-applications-using-snowpark-container-services">Deploying Streamlit Applications using Snowpark Container Services<a class="headerlink" href="#deploying-streamlit-applications-using-snowpark-container-services" title="Permanent link">&para;</a></h1>
+<p>In the previous chapter we learnt how to deploy Streamlit application in Snowflake with SiS. In this chapter we will explore how to containerize the application and deploy it using <a href="https://docs.snowflake.com/en/developer-guide/snowpark-container-services/overview">Snowpark Container Services(SPCS)</a>.</p>
+<p>In this chapter, we will:</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Add a Dockerfile file to containerize the application</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Create Compute Pool</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Create Image Repository</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Build and Deploy the application</li>
+</ul>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
+<ul>
+<li>You have completed the previous chapter on <a href="../snowflake_deploy/">Deploying to SiS</a></li>
+<li>Snow CLI is installed and configured</li>
+<li><a href="https://www.docker.com/products/docker-desktop/">Docker</a> is installed and configured</li>
+<li><a href="../snowflake_deploy/#using-notebook">Notebook</a> has been imported into your Snowflake Account and ready to use.</li>
+</ul>
+<h2 id="preparing-for-spcs-deployment">Preparing for SPCS Deployment<a class="headerlink" href="#preparing-for-spcs-deployment" title="Permanent link">&para;</a></h2>
+<p>To be able to deploy our Penguins ML app as a container onto SPCS we need to </p>
+<ul>
+<li>Create compute pool</li>
+<li>Create an image repository</li>
+<li>Build and Push the container image to the image repository</li>
+<li>Deploy service</li>
+</ul>
+<h3 id="create-compute-pool">Create Compute Pool<a class="headerlink" href="#create-compute-pool" title="Permanent link">&para;</a></h3>
+<p>All SPCS containers run using the required compute size, check the <a href="https://docs.snowflake.com/en/developer-guide/snowpark-container-services/working-with-compute-pool">documentation</a> for more details on available compute pool sizes.</p>
+<p>Let us create one for this tutorial:</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">ST_ML_APP_COMPUTE_POOL</span><span class="o">=</span>st_ml_app_xs
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>snow<span class="w"> </span>spcs<span class="w"> </span>compute-pool<span class="w"> </span>create<span class="w"> </span><span class="nv">$ST_ML_APP_COMPUTE_POOL</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span>--family<span class="w"> </span>CPU_X64_XS
+</span></code></pre></div>
+<p>Let us describe the created compute pool:</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>snow<span class="w"> </span>spcs<span class="w"> </span>compute-pool<span class="w"> </span>describe<span class="w"> </span><span class="nv">$ST_ML_APP_COMPUTE_POOL</span><span class="w"> </span>--format<span class="o">=</span>json
+</span></code></pre></div>
+<p>The compute pool is another Snowflake resource, it has all the usual operations like list, describe, etc., check the <a href="https://github.com/Snowflake-Labs/sf-cheatsheets/blob/main/snow-cli-spcs-cheatsheet.md" target="_blank">cheatsheet</a> for more information.</p>
+<h3 id="creating-spcs-objects">Creating SPCS Objects<a class="headerlink" href="#creating-spcs-objects" title="Permanent link">&para;</a></h3>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<ul>
+<li>SPCS containers cant be run as <code>ACCOUNTADMIN</code> hence we need to create a new role and use that role to run the containers.</li>
+</ul>
+</div>
+<p>Let us switch to our notebook that we used earlier and run the following cells under the section <strong>Snowpark Container Services(SPCS)</strong>,</p>
+<ul>
+<li><code>sql_current_user_role</code></li>
+<li><code>sql_current_database</code></li>
+<li><code>sql_current_user</code></li>
+<li><code>spcs_variables</code></li>
+<li><code>spcs_objects</code> </li>
+</ul>
+<p>After successful execution of the cells you would have created,</p>
+<ul>
+<li>A Role named <code>st_ml_app</code> to create Snowpark Container Services</li>
+<li>A Schema named <code>images</code> on DB <code>ST_ML_APP</code> to hold the image repository.</li>
+<li>A Warehouse <code>st_ml_app_spcs_wh_s</code> which will be used to run query from services.</li>
+</ul>
+<h3 id="building-and-pushing-the-image">Building and Pushing the Image<a class="headerlink" href="#building-and-pushing-the-image" title="Permanent link">&para;</a></h3>
+<p>Get image registry URL,</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">IMAGE_REGISTRY_URL</span><span class="o">=</span><span class="k">$(</span>snow<span class="w"> </span>spcs<span class="w"> </span>image-registry<span class="w"> </span>url<span class="k">)</span>
+</span></code></pre></div>
+<h4 id="create-image-repository">Create Image Repository<a class="headerlink" href="#create-image-repository" title="Permanent link">&para;</a></h4>
+<p>Create an image repository if not exist,</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>snow<span class="w"> </span>spcs<span class="w"> </span>image-repository<span class="w"> </span>create<span class="w"> </span>st_ml_apps<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span>--database<span class="o">=</span><span class="s1">&#39;st_ml_app&#39;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">  </span>--schema<span class="o">=</span><span class="s1">&#39;images&#39;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">  </span>--role<span class="o">=</span><span class="s1">&#39;st_ml_app&#39;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">  </span>--if-not-exists
+</span></code></pre></div>
+<p>Get the image repository <code>st_ml_apps</code> and store it the environment variable <code>$IMAGE_REPO</code>,</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">IMAGE_REPO</span><span class="o">=</span><span class="k">$(</span>snow<span class="w"> </span>spcs<span class="w"> </span>image-repository<span class="w"> </span>url<span class="w"> </span>st_ml_apps<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">  </span>--database<span class="o">=</span><span class="s1">&#39;st_ml_app&#39;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">  </span>--schema<span class="o">=</span><span class="s1">&#39;images&#39;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">  </span>--role<span class="o">=</span><span class="s1">&#39;st_ml_app&#39;</span><span class="k">)</span>
+</span></code></pre></div>
+<h4 id="update-the-app">Update the App<a class="headerlink" href="#update-the-app" title="Permanent link">&para;</a></h4>
+<p>Edit and update the <code>$TUTORIAL_HOME/sis/streamlit_app.py</code> with,</p>
+<div class="language-py highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">streamlit_app.py</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">  1</a></span>
+<span class="normal"><a href="#__codelineno-5-2">  2</a></span>
+<span class="normal"><a href="#__codelineno-5-3">  3</a></span>
+<span class="normal"><a href="#__codelineno-5-4">  4</a></span>
+<span class="normal"><a href="#__codelineno-5-5">  5</a></span>
+<span class="normal"><a href="#__codelineno-5-6">  6</a></span>
+<span class="normal"><a href="#__codelineno-5-7">  7</a></span>
+<span class="normal"><a href="#__codelineno-5-8">  8</a></span>
+<span class="normal"><a href="#__codelineno-5-9">  9</a></span>
+<span class="normal"><a href="#__codelineno-5-10"> 10</a></span>
+<span class="normal"><a href="#__codelineno-5-11"> 11</a></span>
+<span class="normal"><a href="#__codelineno-5-12"> 12</a></span>
+<span class="normal"><a href="#__codelineno-5-13"> 13</a></span>
+<span class="normal"><a href="#__codelineno-5-14"> 14</a></span>
+<span class="normal"><a href="#__codelineno-5-15"> 15</a></span>
+<span class="normal"><a href="#__codelineno-5-16"> 16</a></span>
+<span class="normal"><a href="#__codelineno-5-17"> 17</a></span>
+<span class="normal"><a href="#__codelineno-5-18"> 18</a></span>
+<span class="normal"><a href="#__codelineno-5-19"> 19</a></span>
+<span class="normal"><a href="#__codelineno-5-20"> 20</a></span>
+<span class="normal"><a href="#__codelineno-5-21"> 21</a></span>
+<span class="normal"><a href="#__codelineno-5-22"> 22</a></span>
+<span class="normal"><a href="#__codelineno-5-23"> 23</a></span>
+<span class="normal"><a href="#__codelineno-5-24"> 24</a></span>
+<span class="normal"><a href="#__codelineno-5-25"> 25</a></span>
+<span class="normal"><a href="#__codelineno-5-26"> 26</a></span>
+<span class="normal"><a href="#__codelineno-5-27"> 27</a></span>
+<span class="normal"><a href="#__codelineno-5-28"> 28</a></span>
+<span class="normal"><a href="#__codelineno-5-29"> 29</a></span>
+<span class="normal"><a href="#__codelineno-5-30"> 30</a></span>
+<span class="normal"><a href="#__codelineno-5-31"> 31</a></span>
+<span class="normal"><a href="#__codelineno-5-32"> 32</a></span>
+<span class="normal"><a href="#__codelineno-5-33"> 33</a></span>
+<span class="normal"><a href="#__codelineno-5-34"> 34</a></span>
+<span class="normal"><a href="#__codelineno-5-35"> 35</a></span>
+<span class="normal"><a href="#__codelineno-5-36"> 36</a></span>
+<span class="normal"><a href="#__codelineno-5-37"> 37</a></span>
+<span class="normal"><a href="#__codelineno-5-38"> 38</a></span>
+<span class="normal"><a href="#__codelineno-5-39"> 39</a></span>
+<span class="normal"><a href="#__codelineno-5-40"> 40</a></span>
+<span class="normal"><a href="#__codelineno-5-41"> 41</a></span>
+<span class="normal"><a href="#__codelineno-5-42"> 42</a></span>
+<span class="normal"><a href="#__codelineno-5-43"> 43</a></span>
+<span class="normal"><a href="#__codelineno-5-44"> 44</a></span>
+<span class="normal"><a href="#__codelineno-5-45"> 45</a></span>
+<span class="normal"><a href="#__codelineno-5-46"> 46</a></span>
+<span class="normal"><a href="#__codelineno-5-47"> 47</a></span>
+<span class="normal"><a href="#__codelineno-5-48"> 48</a></span>
+<span class="normal"><a href="#__codelineno-5-49"> 49</a></span>
+<span class="normal"><a href="#__codelineno-5-50"> 50</a></span>
+<span class="normal"><a href="#__codelineno-5-51"> 51</a></span>
+<span class="normal"><a href="#__codelineno-5-52"> 52</a></span>
+<span class="normal"><a href="#__codelineno-5-53"> 53</a></span>
+<span class="normal"><a href="#__codelineno-5-54"> 54</a></span>
+<span class="normal"><a href="#__codelineno-5-55"> 55</a></span>
+<span class="normal"><a href="#__codelineno-5-56"> 56</a></span>
+<span class="normal"><a href="#__codelineno-5-57"> 57</a></span>
+<span class="normal"><a href="#__codelineno-5-58"> 58</a></span>
+<span class="normal"><a href="#__codelineno-5-59"> 59</a></span>
+<span class="normal"><a href="#__codelineno-5-60"> 60</a></span>
+<span class="normal"><a href="#__codelineno-5-61"> 61</a></span>
+<span class="normal"><a href="#__codelineno-5-62"> 62</a></span>
+<span class="normal"><a href="#__codelineno-5-63"> 63</a></span>
+<span class="normal"><a href="#__codelineno-5-64"> 64</a></span>
+<span class="normal"><a href="#__codelineno-5-65"> 65</a></span>
+<span class="normal"><a href="#__codelineno-5-66"> 66</a></span>
+<span class="normal"><a href="#__codelineno-5-67"> 67</a></span>
+<span class="normal"><a href="#__codelineno-5-68"> 68</a></span>
+<span class="normal"><a href="#__codelineno-5-69"> 69</a></span>
+<span class="normal"><a href="#__codelineno-5-70"> 70</a></span>
+<span class="normal"><a href="#__codelineno-5-71"> 71</a></span>
+<span class="normal"><a href="#__codelineno-5-72"> 72</a></span>
+<span class="normal"><a href="#__codelineno-5-73"> 73</a></span>
+<span class="normal"><a href="#__codelineno-5-74"> 74</a></span>
+<span class="normal"><a href="#__codelineno-5-75"> 75</a></span>
+<span class="normal"><a href="#__codelineno-5-76"> 76</a></span>
+<span class="normal"><a href="#__codelineno-5-77"> 77</a></span>
+<span class="normal"><a href="#__codelineno-5-78"> 78</a></span>
+<span class="normal"><a href="#__codelineno-5-79"> 79</a></span>
+<span class="normal"><a href="#__codelineno-5-80"> 80</a></span>
+<span class="normal"><a href="#__codelineno-5-81"> 81</a></span>
+<span class="normal"><a href="#__codelineno-5-82"> 82</a></span>
+<span class="normal"><a href="#__codelineno-5-83"> 83</a></span>
+<span class="normal"><a href="#__codelineno-5-84"> 84</a></span>
+<span class="normal"><a href="#__codelineno-5-85"> 85</a></span>
+<span class="normal"><a href="#__codelineno-5-86"> 86</a></span>
+<span class="normal"><a href="#__codelineno-5-87"> 87</a></span>
+<span class="normal"><a href="#__codelineno-5-88"> 88</a></span>
+<span class="normal"><a href="#__codelineno-5-89"> 89</a></span>
+<span class="normal"><a href="#__codelineno-5-90"> 90</a></span>
+<span class="normal"><a href="#__codelineno-5-91"> 91</a></span>
+<span class="normal"><a href="#__codelineno-5-92"> 92</a></span>
+<span class="normal"><a href="#__codelineno-5-93"> 93</a></span>
+<span class="normal"><a href="#__codelineno-5-94"> 94</a></span>
+<span class="normal"><a href="#__codelineno-5-95"> 95</a></span>
+<span class="normal"><a href="#__codelineno-5-96"> 96</a></span>
+<span class="normal"><a href="#__codelineno-5-97"> 97</a></span>
+<span class="normal"><a href="#__codelineno-5-98"> 98</a></span>
+<span class="normal"><a href="#__codelineno-5-99"> 99</a></span>
+<span class="normal"><a href="#__codelineno-5-100">100</a></span>
+<span class="normal"><a href="#__codelineno-5-101">101</a></span>
+<span class="normal"><a href="#__codelineno-5-102">102</a></span>
+<span class="normal"><a href="#__codelineno-5-103">103</a></span>
+<span class="normal"><a href="#__codelineno-5-104">104</a></span>
+<span class="normal"><a href="#__codelineno-5-105">105</a></span>
+<span class="normal"><a href="#__codelineno-5-106">106</a></span>
+<span class="normal"><a href="#__codelineno-5-107">107</a></span>
+<span class="normal"><a href="#__codelineno-5-108">108</a></span>
+<span class="normal"><a href="#__codelineno-5-109">109</a></span>
+<span class="normal"><a href="#__codelineno-5-110">110</a></span>
+<span class="normal"><a href="#__codelineno-5-111">111</a></span>
+<span class="normal"><a href="#__codelineno-5-112">112</a></span>
+<span class="normal"><a href="#__codelineno-5-113">113</a></span>
+<span class="normal"><a href="#__codelineno-5-114">114</a></span>
+<span class="normal"><a href="#__codelineno-5-115">115</a></span>
+<span class="normal"><a href="#__codelineno-5-116">116</a></span>
+<span class="normal"><a href="#__codelineno-5-117">117</a></span>
+<span class="normal"><a href="#__codelineno-5-118">118</a></span>
+<span class="normal"><a href="#__codelineno-5-119">119</a></span>
+<span class="normal"><a href="#__codelineno-5-120">120</a></span>
+<span class="normal"><a href="#__codelineno-5-121">121</a></span>
+<span class="normal"><a href="#__codelineno-5-122">122</a></span>
+<span class="normal"><a href="#__codelineno-5-123">123</a></span>
+<span class="normal"><a href="#__codelineno-5-124">124</a></span>
+<span class="normal"><a href="#__codelineno-5-125">125</a></span>
+<span class="normal"><a href="#__codelineno-5-126">126</a></span>
+<span class="normal"><a href="#__codelineno-5-127">127</a></span>
+<span class="normal"><a href="#__codelineno-5-128">128</a></span>
+<span class="normal"><a href="#__codelineno-5-129">129</a></span>
+<span class="normal"><a href="#__codelineno-5-130">130</a></span>
+<span class="normal"><a href="#__codelineno-5-131">131</a></span>
+<span class="normal"><a href="#__codelineno-5-132">132</a></span>
+<span class="normal"><a href="#__codelineno-5-133">133</a></span>
+<span class="normal"><a href="#__codelineno-5-134">134</a></span>
+<span class="normal"><a href="#__codelineno-5-135">135</a></span>
+<span class="normal"><a href="#__codelineno-5-136">136</a></span>
+<span class="normal"><a href="#__codelineno-5-137">137</a></span>
+<span class="normal"><a href="#__codelineno-5-138">138</a></span>
+<span class="normal"><a href="#__codelineno-5-139">139</a></span>
+<span class="normal"><a href="#__codelineno-5-140">140</a></span>
+<span class="normal"><a href="#__codelineno-5-141">141</a></span>
+<span class="normal"><a href="#__codelineno-5-142">142</a></span>
+<span class="normal"><a href="#__codelineno-5-143">143</a></span>
+<span class="normal"><a href="#__codelineno-5-144">144</a></span>
+<span class="normal"><a href="#__codelineno-5-145">145</a></span>
+<span class="normal"><a href="#__codelineno-5-146">146</a></span>
+<span class="normal"><a href="#__codelineno-5-147">147</a></span>
+<span class="normal"><a href="#__codelineno-5-148">148</a></span>
+<span class="normal"><a href="#__codelineno-5-149">149</a></span>
+<span class="normal"><a href="#__codelineno-5-150">150</a></span>
+<span class="normal"><a href="#__codelineno-5-151">151</a></span>
+<span class="normal"><a href="#__codelineno-5-152">152</a></span>
+<span class="normal"><a href="#__codelineno-5-153">153</a></span>
+<span class="normal"><a href="#__codelineno-5-154">154</a></span>
+<span class="normal"><a href="#__codelineno-5-155">155</a></span>
+<span class="normal"><a href="#__codelineno-5-156">156</a></span>
+<span class="normal"><a href="#__codelineno-5-157">157</a></span>
+<span class="normal"><a href="#__codelineno-5-158">158</a></span>
+<span class="normal"><a href="#__codelineno-5-159">159</a></span>
+<span class="normal"><a href="#__codelineno-5-160">160</a></span>
+<span class="normal"><a href="#__codelineno-5-161">161</a></span>
+<span class="normal"><a href="#__codelineno-5-162">162</a></span>
+<span class="normal"><a href="#__codelineno-5-163">163</a></span>
+<span class="normal"><a href="#__codelineno-5-164">164</a></span>
+<span class="normal"><a href="#__codelineno-5-165">165</a></span>
+<span class="normal"><a href="#__codelineno-5-166">166</a></span>
+<span class="normal"><a href="#__codelineno-5-167">167</a></span>
+<span class="normal"><a href="#__codelineno-5-168">168</a></span>
+<span class="normal"><a href="#__codelineno-5-169">169</a></span>
+<span class="normal"><a href="#__codelineno-5-170">170</a></span>
+<span class="normal"><a href="#__codelineno-5-171">171</a></span>
+<span class="normal"><a href="#__codelineno-5-172">172</a></span>
+<span class="normal"><a href="#__codelineno-5-173">173</a></span>
+<span class="normal"><a href="#__codelineno-5-174">174</a></span>
+<span class="normal"><a href="#__codelineno-5-175">175</a></span>
+<span class="normal"><a href="#__codelineno-5-176">176</a></span>
+<span class="normal"><a href="#__codelineno-5-177">177</a></span>
+<span class="normal"><a href="#__codelineno-5-178">178</a></span>
+<span class="normal"><a href="#__codelineno-5-179">179</a></span>
+<span class="normal"><a href="#__codelineno-5-180">180</a></span>
+<span class="normal"><a href="#__codelineno-5-181">181</a></span>
+<span class="normal"><a href="#__codelineno-5-182">182</a></span>
+<span class="normal"><a href="#__codelineno-5-183">183</a></span>
+<span class="normal"><a href="#__codelineno-5-184">184</a></span>
+<span class="normal"><a href="#__codelineno-5-185">185</a></span>
+<span class="normal"><a href="#__codelineno-5-186">186</a></span>
+<span class="normal"><a href="#__codelineno-5-187">187</a></span>
+<span class="normal"><a href="#__codelineno-5-188">188</a></span>
+<span class="normal"><a href="#__codelineno-5-189">189</a></span>
+<span class="normal"><a href="#__codelineno-5-190">190</a></span>
+<span class="normal"><a href="#__codelineno-5-191">191</a></span>
+<span class="normal"><a href="#__codelineno-5-192">192</a></span>
+<span class="normal"><a href="#__codelineno-5-193">193</a></span>
+<span class="normal"><a href="#__codelineno-5-194">194</a></span>
+<span class="normal"><a href="#__codelineno-5-195">195</a></span>
+<span class="normal"><a href="#__codelineno-5-196">196</a></span>
+<span class="normal"><a href="#__codelineno-5-197">197</a></span>
+<span class="normal"><a href="#__codelineno-5-198">198</a></span>
+<span class="normal"><a href="#__codelineno-5-199">199</a></span>
+<span class="normal"><a href="#__codelineno-5-200">200</a></span>
+<span class="normal"><a href="#__codelineno-5-201">201</a></span>
+<span class="normal"><a href="#__codelineno-5-202">202</a></span>
+<span class="normal"><a href="#__codelineno-5-203">203</a></span>
+<span class="normal"><a href="#__codelineno-5-204">204</a></span>
+<span class="normal"><a href="#__codelineno-5-205">205</a></span>
+<span class="normal"><a href="#__codelineno-5-206">206</a></span>
+<span class="normal"><a href="#__codelineno-5-207">207</a></span>
+<span class="normal"><a href="#__codelineno-5-208">208</a></span>
+<span class="normal"><a href="#__codelineno-5-209">209</a></span>
+<span class="normal"><a href="#__codelineno-5-210">210</a></span>
+<span class="normal"><a href="#__codelineno-5-211">211</a></span>
+<span class="normal"><a href="#__codelineno-5-212">212</a></span>
+<span class="normal"><a href="#__codelineno-5-213">213</a></span>
+<span class="normal"><a href="#__codelineno-5-214">214</a></span>
+<span class="normal"><a href="#__codelineno-5-215">215</a></span>
+<span class="normal"><a href="#__codelineno-5-216">216</a></span>
+<span class="normal"><a href="#__codelineno-5-217">217</a></span>
+<span class="normal"><a href="#__codelineno-5-218">218</a></span>
+<span class="normal"><a href="#__codelineno-5-219">219</a></span>
+<span class="normal"><a href="#__codelineno-5-220">220</a></span>
+<span class="normal"><a href="#__codelineno-5-221">221</a></span>
+<span class="normal"><a href="#__codelineno-5-222">222</a></span>
+<span class="normal"><a href="#__codelineno-5-223">223</a></span>
+<span class="normal"><a href="#__codelineno-5-224">224</a></span>
+<span class="normal"><a href="#__codelineno-5-225">225</a></span>
+<span class="normal"><a href="#__codelineno-5-226">226</a></span>
+<span class="normal"><a href="#__codelineno-5-227">227</a></span>
+<span class="normal"><a href="#__codelineno-5-228">228</a></span>
+<span class="normal"><a href="#__codelineno-5-229">229</a></span>
+<span class="normal"><a href="#__codelineno-5-230">230</a></span>
+<span class="normal"><a href="#__codelineno-5-231">231</a></span>
+<span class="normal"><a href="#__codelineno-5-232">232</a></span>
+<span class="normal"><a href="#__codelineno-5-233">233</a></span>
+<span class="normal"><a href="#__codelineno-5-234">234</a></span>
+<span class="normal"><a href="#__codelineno-5-235">235</a></span>
+<span class="normal"><a href="#__codelineno-5-236">236</a></span>
+<span class="normal"><a href="#__codelineno-5-237">237</a></span>
+<span class="normal"><a href="#__codelineno-5-238">238</a></span>
+<span class="normal"><a href="#__codelineno-5-239">239</a></span>
+<span class="normal"><a href="#__codelineno-5-240">240</a></span>
+<span class="normal"><a href="#__codelineno-5-241">241</a></span>
+<span class="normal"><a href="#__codelineno-5-242">242</a></span>
+<span class="normal"><a href="#__codelineno-5-243">243</a></span>
+<span class="normal"><a href="#__codelineno-5-244">244</a></span>
+<span class="normal"><a href="#__codelineno-5-245">245</a></span>
+<span class="normal"><a href="#__codelineno-5-246">246</a></span>
+<span class="normal"><a href="#__codelineno-5-247">247</a></span>
+<span class="normal"><a href="#__codelineno-5-248">248</a></span>
+<span class="normal"><a href="#__codelineno-5-249">249</a></span>
+<span class="normal"><a href="#__codelineno-5-250">250</a></span>
+<span class="normal"><a href="#__codelineno-5-251">251</a></span>
+<span class="normal"><a href="#__codelineno-5-252">252</a></span>
+<span class="normal"><a href="#__codelineno-5-253">253</a></span>
+<span class="normal"><a href="#__codelineno-5-254">254</a></span>
+<span class="normal"><a href="#__codelineno-5-255">255</a></span>
+<span class="normal"><a href="#__codelineno-5-256">256</a></span>
+<span class="normal"><a href="#__codelineno-5-257">257</a></span>
+<span class="normal"><a href="#__codelineno-5-258">258</a></span>
+<span class="normal"><a href="#__codelineno-5-259">259</a></span>
+<span class="normal"><a href="#__codelineno-5-260">260</a></span>
+<span class="normal"><a href="#__codelineno-5-261">261</a></span>
+<span class="normal"><a href="#__codelineno-5-262">262</a></span>
+<span class="normal"><a href="#__codelineno-5-263">263</a></span>
+<span class="normal"><a href="#__codelineno-5-264">264</a></span>
+<span class="normal"><a href="#__codelineno-5-265">265</a></span>
+<span class="normal"><a href="#__codelineno-5-266">266</a></span>
+<span class="normal"><a href="#__codelineno-5-267">267</a></span>
+<span class="normal"><a href="#__codelineno-5-268">268</a></span>
+<span class="normal"><a href="#__codelineno-5-269">269</a></span>
+<span class="normal"><a href="#__codelineno-5-270">270</a></span>
+<span class="normal"><a href="#__codelineno-5-271">271</a></span>
+<span class="normal"><a href="#__codelineno-5-272">272</a></span>
+<span class="normal"><a href="#__codelineno-5-273">273</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4"></a>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5"></a><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6"></a><span class="kn">import</span><span class="w"> </span><span class="nn">streamlit</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">st</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7"></a><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8"></a><span class="kn">from</span><span class="w"> </span><span class="nn">snowflake.snowpark.functions</span><span class="w"> </span><span class="kn">import</span> <span class="n">col</span>
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9"></a><span class="kn">from</span><span class="w"> </span><span class="nn">snowflake.snowpark.session</span><span class="w"> </span><span class="kn">import</span> <span class="n">Session</span>
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10"></a><span class="kn">from</span><span class="w"> </span><span class="nn">snowflake.snowpark.types</span><span class="w"> </span><span class="kn">import</span> <span class="n">DecimalType</span><span class="p">,</span> <span class="n">StringType</span>
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11"></a>
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12"></a><span class="hll"><span class="c1"># Environment variables below will be automatically populated by Snowflake.</span>
+</span></span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13"></a><span class="hll"><span class="n">SNOWFLAKE_ACCOUNT</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;SNOWFLAKE_ACCOUNT&quot;</span><span class="p">)</span>
+</span></span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14"></a><span class="hll"><span class="n">SNOWFLAKE_HOST</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;SNOWFLAKE_HOST&quot;</span><span class="p">)</span>
+</span></span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15"></a><span class="hll"><span class="n">SNOWFLAKE_DATABASE</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;SNOWFLAKE_DATABASE&quot;</span><span class="p">)</span>
+</span></span><span id="__span-5-16"><a id="__codelineno-5-16" name="__codelineno-5-16"></a><span class="hll"><span class="n">SNOWFLAKE_SCHEMA</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;SNOWFLAKE_SCHEMA&quot;</span><span class="p">)</span>
+</span></span><span id="__span-5-17"><a id="__codelineno-5-17" name="__codelineno-5-17"></a><span class="hll">
+</span></span><span id="__span-5-18"><a id="__codelineno-5-18" name="__codelineno-5-18"></a><span class="hll"><span class="c1"># Custom environment variables</span>
+</span></span><span id="__span-5-19"><a id="__codelineno-5-19" name="__codelineno-5-19"></a><span class="hll"><span class="n">SNOWFLAKE_WAREHOUSE</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;SNOWFLAKE_WAREHOUSE&quot;</span><span class="p">,</span> <span class="s2">&quot;COMPUTE_WH&quot;</span><span class="p">)</span>
+</span></span><span id="__span-5-20"><a id="__codelineno-5-20" name="__codelineno-5-20"></a><span class="hll">
+</span></span><span id="__span-5-21"><a id="__codelineno-5-21" name="__codelineno-5-21"></a><span class="hll">
+</span></span><span id="__span-5-22"><a id="__codelineno-5-22" name="__codelineno-5-22"></a><span class="hll"><span class="n">SERVICE_HOST</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;SERVER_HOST&quot;</span><span class="p">,</span> <span class="s2">&quot;0.0.0.0&quot;</span><span class="p">)</span>
+</span></span><span id="__span-5-23"><a id="__codelineno-5-23" name="__codelineno-5-23"></a><span class="hll"><span class="n">SERVER_PORT</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;SERVER_PORT&quot;</span><span class="p">,</span> <span class="mi">8080</span><span class="p">)</span>
+</span></span><span id="__span-5-24"><a id="__codelineno-5-24" name="__codelineno-5-24"></a>
+</span><span id="__span-5-25"><a id="__codelineno-5-25" name="__codelineno-5-25"></a>
+</span><span id="__span-5-26"><a id="__codelineno-5-26" name="__codelineno-5-26"></a><span class="k">def</span><span class="w"> </span><span class="nf">get_logger</span><span class="p">(</span><span class="n">logger_name</span><span class="p">):</span>
+</span><span id="__span-5-27"><a id="__codelineno-5-27" name="__codelineno-5-27"></a>    <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">logger_name</span><span class="p">)</span>
+</span><span id="__span-5-28"><a id="__codelineno-5-28" name="__codelineno-5-28"></a>    <span class="n">logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">)</span>
+</span><span id="__span-5-29"><a id="__codelineno-5-29" name="__codelineno-5-29"></a>    <span class="n">handler</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">StreamHandler</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="p">)</span>
+</span><span id="__span-5-30"><a id="__codelineno-5-30" name="__codelineno-5-30"></a>    <span class="n">handler</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">)</span>
+</span><span id="__span-5-31"><a id="__codelineno-5-31" name="__codelineno-5-31"></a>    <span class="n">handler</span><span class="o">.</span><span class="n">setFormatter</span><span class="p">(</span>
+</span><span id="__span-5-32"><a id="__codelineno-5-32" name="__codelineno-5-32"></a>        <span class="n">logging</span><span class="o">.</span><span class="n">Formatter</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%(name)s</span><span class="s2"> [</span><span class="si">%(asctime)s</span><span class="s2">] [</span><span class="si">%(levelname)s</span><span class="s2">] </span><span class="si">%(message)s</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="__span-5-33"><a id="__codelineno-5-33" name="__codelineno-5-33"></a>    <span class="p">)</span>
+</span><span id="__span-5-34"><a id="__codelineno-5-34" name="__codelineno-5-34"></a>    <span class="n">logger</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">handler</span><span class="p">)</span>
+</span><span id="__span-5-35"><a id="__codelineno-5-35" name="__codelineno-5-35"></a>    <span class="k">return</span> <span class="n">logger</span>
+</span><span id="__span-5-36"><a id="__codelineno-5-36" name="__codelineno-5-36"></a>
+</span><span id="__span-5-37"><a id="__codelineno-5-37" name="__codelineno-5-37"></a>
+</span><span id="__span-5-38"><a id="__codelineno-5-38" name="__codelineno-5-38"></a><span class="hll"><span class="k">def</span><span class="w"> </span><span class="nf">get_login_token</span><span class="p">():</span>
+</span></span><span id="__span-5-39"><a id="__codelineno-5-39" name="__codelineno-5-39"></a><span class="hll"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span></span><span id="__span-5-40"><a id="__codelineno-5-40" name="__codelineno-5-40"></a><span class="hll"><span class="sd">    Read the login token supplied automatically by Snowflake. These tokens</span>
+</span></span><span id="__span-5-41"><a id="__codelineno-5-41" name="__codelineno-5-41"></a><span class="hll"><span class="sd">    are short lived and should always be read right before creating any new connection.</span>
+</span></span><span id="__span-5-42"><a id="__codelineno-5-42" name="__codelineno-5-42"></a><span class="hll"><span class="sd">    &quot;&quot;&quot;</span>
+</span></span><span id="__span-5-43"><a id="__codelineno-5-43" name="__codelineno-5-43"></a><span class="hll">    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;/snowflake/session/token&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+</span></span><span id="__span-5-44"><a id="__codelineno-5-44" name="__codelineno-5-44"></a><span class="hll">        <span class="k">return</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</span></span><span id="__span-5-45"><a id="__codelineno-5-45" name="__codelineno-5-45"></a>
+</span><span id="__span-5-46"><a id="__codelineno-5-46" name="__codelineno-5-46"></a>
+</span><span id="__span-5-47"><a id="__codelineno-5-47" name="__codelineno-5-47"></a><span class="n">logger</span> <span class="o">=</span> <span class="n">get_logger</span><span class="p">(</span><span class="s2">&quot;penguins-ml-app&quot;</span><span class="p">)</span>
+</span><span id="__span-5-48"><a id="__codelineno-5-48" name="__codelineno-5-48"></a>
+</span><span id="__span-5-49"><a id="__codelineno-5-49" name="__codelineno-5-49"></a>
+</span><span id="__span-5-50"><a id="__codelineno-5-50" name="__codelineno-5-50"></a><span class="hll"><span class="k">def</span><span class="w"> </span><span class="nf">get_active_session</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Session</span><span class="p">:</span>
+</span></span><span id="__span-5-51"><a id="__codelineno-5-51" name="__codelineno-5-51"></a><span class="hll"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Create or get new Snowflake Session.</span>
+</span></span><span id="__span-5-52"><a id="__codelineno-5-52" name="__codelineno-5-52"></a><span class="hll"><span class="sd">    When running locally it uses the SNOWFLAKE_CONNECTION_NAME environment variable to get the connection name and</span>
+</span></span><span id="__span-5-53"><a id="__codelineno-5-53" name="__codelineno-5-53"></a><span class="hll"><span class="sd">    when running in SiS it uses the context connection.</span>
+</span></span><span id="__span-5-54"><a id="__codelineno-5-54" name="__codelineno-5-54"></a><span class="hll"><span class="sd">    &quot;&quot;&quot;</span>
+</span></span><span id="__span-5-55"><a id="__codelineno-5-55" name="__codelineno-5-55"></a><span class="hll">    <span class="n">token</span> <span class="o">=</span> <span class="n">get_login_token</span><span class="p">()</span>
+</span></span><span id="__span-5-56"><a id="__codelineno-5-56" name="__codelineno-5-56"></a><span class="hll">    <span class="n">session</span> <span class="o">=</span> <span class="n">Session</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">configs</span><span class="p">(</span>
+</span></span><span id="__span-5-57"><a id="__codelineno-5-57" name="__codelineno-5-57"></a><span class="hll">        <span class="p">{</span>
+</span></span><span id="__span-5-58"><a id="__codelineno-5-58" name="__codelineno-5-58"></a><span class="hll">            <span class="s2">&quot;account&quot;</span><span class="p">:</span> <span class="n">SNOWFLAKE_ACCOUNT</span><span class="p">,</span>
+</span></span><span id="__span-5-59"><a id="__codelineno-5-59" name="__codelineno-5-59"></a><span class="hll">            <span class="s2">&quot;host&quot;</span><span class="p">:</span> <span class="n">SNOWFLAKE_HOST</span><span class="p">,</span>
+</span></span><span id="__span-5-60"><a id="__codelineno-5-60" name="__codelineno-5-60"></a><span class="hll">            <span class="s2">&quot;authenticator&quot;</span><span class="p">:</span> <span class="s2">&quot;oauth&quot;</span><span class="p">,</span>
+</span></span><span id="__span-5-61"><a id="__codelineno-5-61" name="__codelineno-5-61"></a><span class="hll">            <span class="s2">&quot;token&quot;</span><span class="p">:</span> <span class="n">token</span><span class="p">,</span>
+</span></span><span id="__span-5-62"><a id="__codelineno-5-62" name="__codelineno-5-62"></a><span class="hll">            <span class="s2">&quot;warehouse&quot;</span><span class="p">:</span> <span class="n">SNOWFLAKE_WAREHOUSE</span><span class="p">,</span>
+</span></span><span id="__span-5-63"><a id="__codelineno-5-63" name="__codelineno-5-63"></a><span class="hll">            <span class="s2">&quot;database&quot;</span><span class="p">:</span> <span class="n">SNOWFLAKE_DATABASE</span><span class="p">,</span>
+</span></span><span id="__span-5-64"><a id="__codelineno-5-64" name="__codelineno-5-64"></a><span class="hll">            <span class="s2">&quot;schema&quot;</span><span class="p">:</span> <span class="n">SNOWFLAKE_SCHEMA</span><span class="p">,</span>
+</span></span><span id="__span-5-65"><a id="__codelineno-5-65" name="__codelineno-5-65"></a><span class="hll">        <span class="p">}</span>
+</span></span><span id="__span-5-66"><a id="__codelineno-5-66" name="__codelineno-5-66"></a><span class="hll">    <span class="p">)</span><span class="o">.</span><span class="n">getOrCreate</span><span class="p">()</span>
+</span></span><span id="__span-5-67"><a id="__codelineno-5-67" name="__codelineno-5-67"></a><span class="hll">    <span class="k">return</span> <span class="n">session</span>
+</span></span><span id="__span-5-68"><a id="__codelineno-5-68" name="__codelineno-5-68"></a>
+</span><span id="__span-5-69"><a id="__codelineno-5-69" name="__codelineno-5-69"></a>
+</span><span id="__span-5-70"><a id="__codelineno-5-70" name="__codelineno-5-70"></a><span class="n">session</span> <span class="o">=</span> <span class="n">get_active_session</span><span class="p">()</span>
+</span><span id="__span-5-71"><a id="__codelineno-5-71" name="__codelineno-5-71"></a>
+</span><span id="__span-5-72"><a id="__codelineno-5-72" name="__codelineno-5-72"></a><span class="n">st</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;🤖 Machine Learning App&quot;</span><span class="p">)</span>
+</span><span id="__span-5-73"><a id="__codelineno-5-73" name="__codelineno-5-73"></a>
+</span><span id="__span-5-74"><a id="__codelineno-5-74" name="__codelineno-5-74"></a><span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Welcome to world of Machine Learning with Streamlit.&quot;</span><span class="p">)</span>
+</span><span id="__span-5-75"><a id="__codelineno-5-75" name="__codelineno-5-75"></a>
+</span><span id="__span-5-76"><a id="__codelineno-5-76" name="__codelineno-5-76"></a><span class="k">with</span> <span class="n">st</span><span class="o">.</span><span class="n">expander</span><span class="p">(</span><span class="s2">&quot;Data&quot;</span><span class="p">):</span>
+</span><span id="__span-5-77"><a id="__codelineno-5-77" name="__codelineno-5-77"></a>    <span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;**Raw Data**&quot;</span><span class="p">)</span>
+</span><span id="__span-5-78"><a id="__codelineno-5-78" name="__codelineno-5-78"></a>    <span class="c1"># read the data from table</span>
+</span><span id="__span-5-79"><a id="__codelineno-5-79" name="__codelineno-5-79"></a>    <span class="c1"># cast the columns to right data types with right precision</span>
+</span><span id="__span-5-80"><a id="__codelineno-5-80" name="__codelineno-5-80"></a>    <span class="n">df</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">table</span><span class="p">(</span><span class="s2">&quot;st_ml_app.data.penguins&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">select</span><span class="p">(</span>
+</span><span id="__span-5-81"><a id="__codelineno-5-81" name="__codelineno-5-81"></a>        <span class="n">col</span><span class="p">(</span><span class="s2">&quot;island&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">StringType</span><span class="p">())</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;island&quot;</span><span class="p">),</span>
+</span><span id="__span-5-82"><a id="__codelineno-5-82" name="__codelineno-5-82"></a>        <span class="n">col</span><span class="p">(</span><span class="s2">&quot;species&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">StringType</span><span class="p">())</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;species&quot;</span><span class="p">),</span>
+</span><span id="__span-5-83"><a id="__codelineno-5-83" name="__codelineno-5-83"></a>        <span class="n">col</span><span class="p">(</span><span class="s2">&quot;bill_length_mm&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">DecimalType</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;bill_length_mm&quot;</span><span class="p">),</span>
+</span><span id="__span-5-84"><a id="__codelineno-5-84" name="__codelineno-5-84"></a>        <span class="n">col</span><span class="p">(</span><span class="s2">&quot;bill_depth_mm&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">DecimalType</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;bill_depth_mm&quot;</span><span class="p">),</span>
+</span><span id="__span-5-85"><a id="__codelineno-5-85" name="__codelineno-5-85"></a>        <span class="n">col</span><span class="p">(</span><span class="s2">&quot;flipper_length_mm&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">DecimalType</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;flipper_length_mm&quot;</span><span class="p">),</span>
+</span><span id="__span-5-86"><a id="__codelineno-5-86" name="__codelineno-5-86"></a>        <span class="n">col</span><span class="p">(</span><span class="s2">&quot;body_mass_g&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">DecimalType</span><span class="p">())</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;body_mass_g&quot;</span><span class="p">),</span>
+</span><span id="__span-5-87"><a id="__codelineno-5-87" name="__codelineno-5-87"></a>        <span class="n">col</span><span class="p">(</span><span class="s2">&quot;sex&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">StringType</span><span class="p">())</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;sex&quot;</span><span class="p">),</span>
+</span><span id="__span-5-88"><a id="__codelineno-5-88" name="__codelineno-5-88"></a>    <span class="p">)</span>
+</span><span id="__span-5-89"><a id="__codelineno-5-89" name="__codelineno-5-89"></a>    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">to_pandas</span><span class="p">()</span>
+</span><span id="__span-5-90"><a id="__codelineno-5-90" name="__codelineno-5-90"></a>    <span class="c1"># make the column names lower to reuse the rest of the code as is</span>
+</span><span id="__span-5-91"><a id="__codelineno-5-91" name="__codelineno-5-91"></a>    <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+</span><span id="__span-5-92"><a id="__codelineno-5-92" name="__codelineno-5-92"></a>    <span class="c1"># define and display</span>
+</span><span id="__span-5-93"><a id="__codelineno-5-93" name="__codelineno-5-93"></a>    <span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;**X**&quot;</span><span class="p">)</span>
+</span><span id="__span-5-94"><a id="__codelineno-5-94" name="__codelineno-5-94"></a>    <span class="n">X_raw</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;species&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span><span id="__span-5-95"><a id="__codelineno-5-95" name="__codelineno-5-95"></a>    <span class="n">X_raw</span>
+</span><span id="__span-5-96"><a id="__codelineno-5-96" name="__codelineno-5-96"></a>
+</span><span id="__span-5-97"><a id="__codelineno-5-97" name="__codelineno-5-97"></a>    <span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;**y**&quot;</span><span class="p">)</span>
+</span><span id="__span-5-98"><a id="__codelineno-5-98" name="__codelineno-5-98"></a>    <span class="n">y_raw</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">species</span>
+</span><span id="__span-5-99"><a id="__codelineno-5-99" name="__codelineno-5-99"></a>    <span class="n">y_raw</span>
+</span><span id="__span-5-100"><a id="__codelineno-5-100" name="__codelineno-5-100"></a>
+</span><span id="__span-5-101"><a id="__codelineno-5-101" name="__codelineno-5-101"></a><span class="k">with</span> <span class="n">st</span><span class="o">.</span><span class="n">expander</span><span class="p">(</span><span class="s2">&quot;Data Visualization&quot;</span><span class="p">):</span>
+</span><span id="__span-5-102"><a id="__codelineno-5-102" name="__codelineno-5-102"></a>    <span class="n">st</span><span class="o">.</span><span class="n">scatter_chart</span><span class="p">(</span>
+</span><span id="__span-5-103"><a id="__codelineno-5-103" name="__codelineno-5-103"></a>        <span class="n">df</span><span class="p">,</span>
+</span><span id="__span-5-104"><a id="__codelineno-5-104" name="__codelineno-5-104"></a>        <span class="n">x</span><span class="o">=</span><span class="s2">&quot;bill_length_mm&quot;</span><span class="p">,</span>
+</span><span id="__span-5-105"><a id="__codelineno-5-105" name="__codelineno-5-105"></a>        <span class="n">y</span><span class="o">=</span><span class="s2">&quot;body_mass_g&quot;</span><span class="p">,</span>
+</span><span id="__span-5-106"><a id="__codelineno-5-106" name="__codelineno-5-106"></a>        <span class="n">color</span><span class="o">=</span><span class="s2">&quot;species&quot;</span><span class="p">,</span>
+</span><span id="__span-5-107"><a id="__codelineno-5-107" name="__codelineno-5-107"></a>    <span class="p">)</span>
+</span><span id="__span-5-108"><a id="__codelineno-5-108" name="__codelineno-5-108"></a>
+</span><span id="__span-5-109"><a id="__codelineno-5-109" name="__codelineno-5-109"></a><span class="c1"># Interactivity</span>
+</span><span id="__span-5-110"><a id="__codelineno-5-110" name="__codelineno-5-110"></a><span class="c1"># Columns:</span>
+</span><span id="__span-5-111"><a id="__codelineno-5-111" name="__codelineno-5-111"></a><span class="c1"># &#39;species&#39;, &#39;island&#39;, &#39;bill_length_mm&#39;, &#39;bill_depth_mm&#39;,</span>
+</span><span id="__span-5-112"><a id="__codelineno-5-112" name="__codelineno-5-112"></a><span class="c1"># &#39;flipper_length_mm&#39;, &#39;body_mass_g&#39;, &#39;sex&#39;</span>
+</span><span id="__span-5-113"><a id="__codelineno-5-113" name="__codelineno-5-113"></a><span class="k">with</span> <span class="n">st</span><span class="o">.</span><span class="n">sidebar</span><span class="p">:</span>
+</span><span id="__span-5-114"><a id="__codelineno-5-114" name="__codelineno-5-114"></a>    <span class="n">st</span><span class="o">.</span><span class="n">header</span><span class="p">(</span><span class="s2">&quot;Input Features&quot;</span><span class="p">)</span>
+</span><span id="__span-5-115"><a id="__codelineno-5-115" name="__codelineno-5-115"></a>    <span class="c1"># Islands</span>
+</span><span id="__span-5-116"><a id="__codelineno-5-116" name="__codelineno-5-116"></a>    <span class="n">islands</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">island</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+</span><span id="__span-5-117"><a id="__codelineno-5-117" name="__codelineno-5-117"></a>    <span class="n">island</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">selectbox</span><span class="p">(</span>
+</span><span id="__span-5-118"><a id="__codelineno-5-118" name="__codelineno-5-118"></a>        <span class="s2">&quot;Island&quot;</span><span class="p">,</span>
+</span><span id="__span-5-119"><a id="__codelineno-5-119" name="__codelineno-5-119"></a>        <span class="n">islands</span><span class="p">,</span>
+</span><span id="__span-5-120"><a id="__codelineno-5-120" name="__codelineno-5-120"></a>    <span class="p">)</span>
+</span><span id="__span-5-121"><a id="__codelineno-5-121" name="__codelineno-5-121"></a>    <span class="c1"># Bill Length</span>
+</span><span id="__span-5-122"><a id="__codelineno-5-122" name="__codelineno-5-122"></a>    <span class="nb">min</span><span class="p">,</span> <span class="nb">max</span><span class="p">,</span> <span class="n">mean</span> <span class="o">=</span> <span class="p">(</span>
+</span><span id="__span-5-123"><a id="__codelineno-5-123" name="__codelineno-5-123"></a>        <span class="n">df</span><span class="o">.</span><span class="n">bill_length_mm</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span>
+</span><span id="__span-5-124"><a id="__codelineno-5-124" name="__codelineno-5-124"></a>        <span class="n">df</span><span class="o">.</span><span class="n">bill_length_mm</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span>
+</span><span id="__span-5-125"><a id="__codelineno-5-125" name="__codelineno-5-125"></a>        <span class="n">df</span><span class="o">.</span><span class="n">bill_length_mm</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>
+</span><span id="__span-5-126"><a id="__codelineno-5-126" name="__codelineno-5-126"></a>    <span class="p">)</span>
+</span><span id="__span-5-127"><a id="__codelineno-5-127" name="__codelineno-5-127"></a>    <span class="n">bill_length_mm</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">slider</span><span class="p">(</span>
+</span><span id="__span-5-128"><a id="__codelineno-5-128" name="__codelineno-5-128"></a>        <span class="s2">&quot;Bill Length(mm)&quot;</span><span class="p">,</span>
+</span><span id="__span-5-129"><a id="__codelineno-5-129" name="__codelineno-5-129"></a>        <span class="n">min_value</span><span class="o">=</span><span class="nb">min</span><span class="p">,</span>
+</span><span id="__span-5-130"><a id="__codelineno-5-130" name="__codelineno-5-130"></a>        <span class="n">max_value</span><span class="o">=</span><span class="nb">max</span><span class="p">,</span>
+</span><span id="__span-5-131"><a id="__codelineno-5-131" name="__codelineno-5-131"></a>        <span class="n">value</span><span class="o">=</span><span class="n">mean</span><span class="p">,</span>
+</span><span id="__span-5-132"><a id="__codelineno-5-132" name="__codelineno-5-132"></a>    <span class="p">)</span>
+</span><span id="__span-5-133"><a id="__codelineno-5-133" name="__codelineno-5-133"></a>    <span class="c1"># Bill Depth</span>
+</span><span id="__span-5-134"><a id="__codelineno-5-134" name="__codelineno-5-134"></a>    <span class="nb">min</span><span class="p">,</span> <span class="nb">max</span><span class="p">,</span> <span class="n">mean</span> <span class="o">=</span> <span class="p">(</span>
+</span><span id="__span-5-135"><a id="__codelineno-5-135" name="__codelineno-5-135"></a>        <span class="n">df</span><span class="o">.</span><span class="n">bill_depth_mm</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span>
+</span><span id="__span-5-136"><a id="__codelineno-5-136" name="__codelineno-5-136"></a>        <span class="n">df</span><span class="o">.</span><span class="n">bill_depth_mm</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span>
+</span><span id="__span-5-137"><a id="__codelineno-5-137" name="__codelineno-5-137"></a>        <span class="n">df</span><span class="o">.</span><span class="n">bill_depth_mm</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>
+</span><span id="__span-5-138"><a id="__codelineno-5-138" name="__codelineno-5-138"></a>    <span class="p">)</span>
+</span><span id="__span-5-139"><a id="__codelineno-5-139" name="__codelineno-5-139"></a>    <span class="n">bill_depth_mm</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">slider</span><span class="p">(</span>
+</span><span id="__span-5-140"><a id="__codelineno-5-140" name="__codelineno-5-140"></a>        <span class="s2">&quot;Bill Depth(mm)&quot;</span><span class="p">,</span>
+</span><span id="__span-5-141"><a id="__codelineno-5-141" name="__codelineno-5-141"></a>        <span class="n">min_value</span><span class="o">=</span><span class="nb">min</span><span class="p">,</span>
+</span><span id="__span-5-142"><a id="__codelineno-5-142" name="__codelineno-5-142"></a>        <span class="n">max_value</span><span class="o">=</span><span class="nb">max</span><span class="p">,</span>
+</span><span id="__span-5-143"><a id="__codelineno-5-143" name="__codelineno-5-143"></a>        <span class="n">value</span><span class="o">=</span><span class="n">mean</span><span class="p">,</span>
+</span><span id="__span-5-144"><a id="__codelineno-5-144" name="__codelineno-5-144"></a>    <span class="p">)</span>
+</span><span id="__span-5-145"><a id="__codelineno-5-145" name="__codelineno-5-145"></a>    <span class="c1"># Flipper Length</span>
+</span><span id="__span-5-146"><a id="__codelineno-5-146" name="__codelineno-5-146"></a>    <span class="nb">min</span><span class="p">,</span> <span class="nb">max</span><span class="p">,</span> <span class="n">mean</span> <span class="o">=</span> <span class="p">(</span>
+</span><span id="__span-5-147"><a id="__codelineno-5-147" name="__codelineno-5-147"></a>        <span class="n">df</span><span class="o">.</span><span class="n">flipper_length_mm</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span>
+</span><span id="__span-5-148"><a id="__codelineno-5-148" name="__codelineno-5-148"></a>        <span class="n">df</span><span class="o">.</span><span class="n">flipper_length_mm</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span>
+</span><span id="__span-5-149"><a id="__codelineno-5-149" name="__codelineno-5-149"></a>        <span class="n">df</span><span class="o">.</span><span class="n">flipper_length_mm</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>
+</span><span id="__span-5-150"><a id="__codelineno-5-150" name="__codelineno-5-150"></a>    <span class="p">)</span>
+</span><span id="__span-5-151"><a id="__codelineno-5-151" name="__codelineno-5-151"></a>    <span class="n">flipper_length_mm</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">slider</span><span class="p">(</span>
+</span><span id="__span-5-152"><a id="__codelineno-5-152" name="__codelineno-5-152"></a>        <span class="s2">&quot;Flipper Length(mm)&quot;</span><span class="p">,</span>
+</span><span id="__span-5-153"><a id="__codelineno-5-153" name="__codelineno-5-153"></a>        <span class="n">min_value</span><span class="o">=</span><span class="nb">min</span><span class="p">,</span>
+</span><span id="__span-5-154"><a id="__codelineno-5-154" name="__codelineno-5-154"></a>        <span class="n">max_value</span><span class="o">=</span><span class="nb">max</span><span class="p">,</span>
+</span><span id="__span-5-155"><a id="__codelineno-5-155" name="__codelineno-5-155"></a>        <span class="n">value</span><span class="o">=</span><span class="n">mean</span><span class="p">,</span>
+</span><span id="__span-5-156"><a id="__codelineno-5-156" name="__codelineno-5-156"></a>    <span class="p">)</span>
+</span><span id="__span-5-157"><a id="__codelineno-5-157" name="__codelineno-5-157"></a>    <span class="c1"># Body Mass</span>
+</span><span id="__span-5-158"><a id="__codelineno-5-158" name="__codelineno-5-158"></a>    <span class="nb">min</span><span class="p">,</span> <span class="nb">max</span><span class="p">,</span> <span class="n">mean</span> <span class="o">=</span> <span class="p">(</span>
+</span><span id="__span-5-159"><a id="__codelineno-5-159" name="__codelineno-5-159"></a>        <span class="n">df</span><span class="o">.</span><span class="n">body_mass_g</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">),</span>
+</span><span id="__span-5-160"><a id="__codelineno-5-160" name="__codelineno-5-160"></a>        <span class="n">df</span><span class="o">.</span><span class="n">body_mass_g</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">),</span>
+</span><span id="__span-5-161"><a id="__codelineno-5-161" name="__codelineno-5-161"></a>        <span class="n">df</span><span class="o">.</span><span class="n">body_mass_g</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>
+</span><span id="__span-5-162"><a id="__codelineno-5-162" name="__codelineno-5-162"></a>    <span class="p">)</span>
+</span><span id="__span-5-163"><a id="__codelineno-5-163" name="__codelineno-5-163"></a>    <span class="n">body_mass_g</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">slider</span><span class="p">(</span>
+</span><span id="__span-5-164"><a id="__codelineno-5-164" name="__codelineno-5-164"></a>        <span class="s2">&quot;Body Mass(g)&quot;</span><span class="p">,</span>
+</span><span id="__span-5-165"><a id="__codelineno-5-165" name="__codelineno-5-165"></a>        <span class="n">min_value</span><span class="o">=</span><span class="nb">min</span><span class="p">,</span>
+</span><span id="__span-5-166"><a id="__codelineno-5-166" name="__codelineno-5-166"></a>        <span class="n">max_value</span><span class="o">=</span><span class="nb">max</span><span class="p">,</span>
+</span><span id="__span-5-167"><a id="__codelineno-5-167" name="__codelineno-5-167"></a>        <span class="n">value</span><span class="o">=</span><span class="n">mean</span><span class="p">,</span>
+</span><span id="__span-5-168"><a id="__codelineno-5-168" name="__codelineno-5-168"></a>    <span class="p">)</span>
+</span><span id="__span-5-169"><a id="__codelineno-5-169" name="__codelineno-5-169"></a>    <span class="c1"># Gender</span>
+</span><span id="__span-5-170"><a id="__codelineno-5-170" name="__codelineno-5-170"></a>    <span class="n">gender</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">radio</span><span class="p">(</span>
+</span><span id="__span-5-171"><a id="__codelineno-5-171" name="__codelineno-5-171"></a>        <span class="s2">&quot;Gender&quot;</span><span class="p">,</span>
+</span><span id="__span-5-172"><a id="__codelineno-5-172" name="__codelineno-5-172"></a>        <span class="p">(</span><span class="s2">&quot;male&quot;</span><span class="p">,</span> <span class="s2">&quot;female&quot;</span><span class="p">),</span>
+</span><span id="__span-5-173"><a id="__codelineno-5-173" name="__codelineno-5-173"></a>    <span class="p">)</span>
+</span><span id="__span-5-174"><a id="__codelineno-5-174" name="__codelineno-5-174"></a>
+</span><span id="__span-5-175"><a id="__codelineno-5-175" name="__codelineno-5-175"></a><span class="c1"># Dataframes for Input features</span>
+</span><span id="__span-5-176"><a id="__codelineno-5-176" name="__codelineno-5-176"></a><span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+</span><span id="__span-5-177"><a id="__codelineno-5-177" name="__codelineno-5-177"></a>    <span class="s2">&quot;island&quot;</span><span class="p">:</span> <span class="n">island</span><span class="p">,</span>
+</span><span id="__span-5-178"><a id="__codelineno-5-178" name="__codelineno-5-178"></a>    <span class="s2">&quot;bill_length_mm&quot;</span><span class="p">:</span> <span class="n">bill_length_mm</span><span class="p">,</span>
+</span><span id="__span-5-179"><a id="__codelineno-5-179" name="__codelineno-5-179"></a>    <span class="s2">&quot;bill_depth_mm&quot;</span><span class="p">:</span> <span class="n">bill_depth_mm</span><span class="p">,</span>
+</span><span id="__span-5-180"><a id="__codelineno-5-180" name="__codelineno-5-180"></a>    <span class="s2">&quot;flipper_length_mm&quot;</span><span class="p">:</span> <span class="n">flipper_length_mm</span><span class="p">,</span>
+</span><span id="__span-5-181"><a id="__codelineno-5-181" name="__codelineno-5-181"></a>    <span class="s2">&quot;body_mass_g&quot;</span><span class="p">:</span> <span class="n">body_mass_g</span><span class="p">,</span>
+</span><span id="__span-5-182"><a id="__codelineno-5-182" name="__codelineno-5-182"></a>    <span class="s2">&quot;sex&quot;</span><span class="p">:</span> <span class="n">gender</span><span class="p">,</span>
+</span><span id="__span-5-183"><a id="__codelineno-5-183" name="__codelineno-5-183"></a><span class="p">}</span>
+</span><span id="__span-5-184"><a id="__codelineno-5-184" name="__codelineno-5-184"></a><span class="n">input_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</span><span id="__span-5-185"><a id="__codelineno-5-185" name="__codelineno-5-185"></a><span class="n">input_penguins</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">input_df</span><span class="p">,</span> <span class="n">X_raw</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</span><span id="__span-5-186"><a id="__codelineno-5-186" name="__codelineno-5-186"></a>
+</span><span id="__span-5-187"><a id="__codelineno-5-187" name="__codelineno-5-187"></a><span class="k">with</span> <span class="n">st</span><span class="o">.</span><span class="n">expander</span><span class="p">(</span><span class="s2">&quot;Input Features&quot;</span><span class="p">):</span>
+</span><span id="__span-5-188"><a id="__codelineno-5-188" name="__codelineno-5-188"></a>    <span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;**Input Penguins**&quot;</span><span class="p">)</span>
+</span><span id="__span-5-189"><a id="__codelineno-5-189" name="__codelineno-5-189"></a>    <span class="n">input_df</span>
+</span><span id="__span-5-190"><a id="__codelineno-5-190" name="__codelineno-5-190"></a>    <span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;**Combined Penguins Data**&quot;</span><span class="p">)</span>
+</span><span id="__span-5-191"><a id="__codelineno-5-191" name="__codelineno-5-191"></a>    <span class="n">input_penguins</span>
+</span><span id="__span-5-192"><a id="__codelineno-5-192" name="__codelineno-5-192"></a>
+</span><span id="__span-5-193"><a id="__codelineno-5-193" name="__codelineno-5-193"></a><span class="c1">## Data Preparation</span>
+</span><span id="__span-5-194"><a id="__codelineno-5-194" name="__codelineno-5-194"></a>
+</span><span id="__span-5-195"><a id="__codelineno-5-195" name="__codelineno-5-195"></a><span class="c1">## Encode X</span>
+</span><span id="__span-5-196"><a id="__codelineno-5-196" name="__codelineno-5-196"></a><span class="n">X_encode</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;island&quot;</span><span class="p">,</span> <span class="s2">&quot;sex&quot;</span><span class="p">]</span>
+</span><span id="__span-5-197"><a id="__codelineno-5-197" name="__codelineno-5-197"></a><span class="n">df_penguins</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">input_penguins</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="n">X_encode</span><span class="p">)</span>
+</span><span id="__span-5-198"><a id="__codelineno-5-198" name="__codelineno-5-198"></a><span class="n">X</span> <span class="o">=</span> <span class="n">df_penguins</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+</span><span id="__span-5-199"><a id="__codelineno-5-199" name="__codelineno-5-199"></a><span class="n">input_row</span> <span class="o">=</span> <span class="n">df_penguins</span><span class="p">[:</span><span class="mi">1</span><span class="p">]</span>
+</span><span id="__span-5-200"><a id="__codelineno-5-200" name="__codelineno-5-200"></a>
+</span><span id="__span-5-201"><a id="__codelineno-5-201" name="__codelineno-5-201"></a><span class="c1">## Encode Y</span>
+</span><span id="__span-5-202"><a id="__codelineno-5-202" name="__codelineno-5-202"></a><span class="n">target_mapper</span> <span class="o">=</span> <span class="p">{</span>
+</span><span id="__span-5-203"><a id="__codelineno-5-203" name="__codelineno-5-203"></a>    <span class="s2">&quot;Adelie&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+</span><span id="__span-5-204"><a id="__codelineno-5-204" name="__codelineno-5-204"></a>    <span class="s2">&quot;Chinstrap&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+</span><span id="__span-5-205"><a id="__codelineno-5-205" name="__codelineno-5-205"></a>    <span class="s2">&quot;Gentoo&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+</span><span id="__span-5-206"><a id="__codelineno-5-206" name="__codelineno-5-206"></a><span class="p">}</span>
+</span><span id="__span-5-207"><a id="__codelineno-5-207" name="__codelineno-5-207"></a>
+</span><span id="__span-5-208"><a id="__codelineno-5-208" name="__codelineno-5-208"></a>
+</span><span id="__span-5-209"><a id="__codelineno-5-209" name="__codelineno-5-209"></a><span class="k">def</span><span class="w"> </span><span class="nf">target_encoder</span><span class="p">(</span><span class="n">val_y</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+</span><span id="__span-5-210"><a id="__codelineno-5-210" name="__codelineno-5-210"></a>    <span class="k">return</span> <span class="n">target_mapper</span><span class="p">[</span><span class="n">val_y</span><span class="p">]</span>
+</span><span id="__span-5-211"><a id="__codelineno-5-211" name="__codelineno-5-211"></a>
+</span><span id="__span-5-212"><a id="__codelineno-5-212" name="__codelineno-5-212"></a>
+</span><span id="__span-5-213"><a id="__codelineno-5-213" name="__codelineno-5-213"></a><span class="n">y</span> <span class="o">=</span> <span class="n">y_raw</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">target_encoder</span><span class="p">)</span>
+</span><span id="__span-5-214"><a id="__codelineno-5-214" name="__codelineno-5-214"></a>
+</span><span id="__span-5-215"><a id="__codelineno-5-215" name="__codelineno-5-215"></a><span class="k">with</span> <span class="n">st</span><span class="o">.</span><span class="n">expander</span><span class="p">(</span><span class="s2">&quot;Data Preparation&quot;</span><span class="p">):</span>
+</span><span id="__span-5-216"><a id="__codelineno-5-216" name="__codelineno-5-216"></a>    <span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;**Encoded X (input penguins)**&quot;</span><span class="p">)</span>
+</span><span id="__span-5-217"><a id="__codelineno-5-217" name="__codelineno-5-217"></a>    <span class="n">input_row</span>
+</span><span id="__span-5-218"><a id="__codelineno-5-218" name="__codelineno-5-218"></a>    <span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;**Encoded y**&quot;</span><span class="p">)</span>
+</span><span id="__span-5-219"><a id="__codelineno-5-219" name="__codelineno-5-219"></a>    <span class="n">y</span>
+</span><span id="__span-5-220"><a id="__codelineno-5-220" name="__codelineno-5-220"></a>
+</span><span id="__span-5-221"><a id="__codelineno-5-221" name="__codelineno-5-221"></a>
+</span><span id="__span-5-222"><a id="__codelineno-5-222" name="__codelineno-5-222"></a><span class="k">with</span> <span class="n">st</span><span class="o">.</span><span class="n">container</span><span class="p">():</span>
+</span><span id="__span-5-223"><a id="__codelineno-5-223" name="__codelineno-5-223"></a>    <span class="n">st</span><span class="o">.</span><span class="n">subheader</span><span class="p">(</span><span class="s2">&quot;**Prediction Probability**&quot;</span><span class="p">)</span>
+</span><span id="__span-5-224"><a id="__codelineno-5-224" name="__codelineno-5-224"></a>    <span class="c1">## Model Training</span>
+</span><span id="__span-5-225"><a id="__codelineno-5-225" name="__codelineno-5-225"></a>    <span class="n">rf_classifier</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">()</span>
+</span><span id="__span-5-226"><a id="__codelineno-5-226" name="__codelineno-5-226"></a>    <span class="c1"># Fit the model</span>
+</span><span id="__span-5-227"><a id="__codelineno-5-227" name="__codelineno-5-227"></a>    <span class="n">rf_classifier</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</span><span id="__span-5-228"><a id="__codelineno-5-228" name="__codelineno-5-228"></a>    <span class="c1"># predict using the model</span>
+</span><span id="__span-5-229"><a id="__codelineno-5-229" name="__codelineno-5-229"></a>    <span class="n">prediction</span> <span class="o">=</span> <span class="n">rf_classifier</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">input_row</span><span class="p">)</span>
+</span><span id="__span-5-230"><a id="__codelineno-5-230" name="__codelineno-5-230"></a>    <span class="n">prediction_prob</span> <span class="o">=</span> <span class="n">rf_classifier</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">input_row</span><span class="p">)</span>
+</span><span id="__span-5-231"><a id="__codelineno-5-231" name="__codelineno-5-231"></a>
+</span><span id="__span-5-232"><a id="__codelineno-5-232" name="__codelineno-5-232"></a>    <span class="c1"># reverse the target_mapper</span>
+</span><span id="__span-5-233"><a id="__codelineno-5-233" name="__codelineno-5-233"></a>    <span class="n">p_cols</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">((</span><span class="n">v</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">target_mapper</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+</span><span id="__span-5-234"><a id="__codelineno-5-234" name="__codelineno-5-234"></a>    <span class="n">df_prediction_prob</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">prediction_prob</span><span class="p">)</span>
+</span><span id="__span-5-235"><a id="__codelineno-5-235" name="__codelineno-5-235"></a>    <span class="c1"># set the column names</span>
+</span><span id="__span-5-236"><a id="__codelineno-5-236" name="__codelineno-5-236"></a>    <span class="n">df_prediction_prob</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">p_cols</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+</span><span id="__span-5-237"><a id="__codelineno-5-237" name="__codelineno-5-237"></a>    <span class="c1"># set the Penguin name</span>
+</span><span id="__span-5-238"><a id="__codelineno-5-238" name="__codelineno-5-238"></a>    <span class="n">df_prediction_prob</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">p_cols</span><span class="p">)</span>
+</span><span id="__span-5-239"><a id="__codelineno-5-239" name="__codelineno-5-239"></a>
+</span><span id="__span-5-240"><a id="__codelineno-5-240" name="__codelineno-5-240"></a>    <span class="n">st</span><span class="o">.</span><span class="n">dataframe</span><span class="p">(</span>
+</span><span id="__span-5-241"><a id="__codelineno-5-241" name="__codelineno-5-241"></a>        <span class="n">df_prediction_prob</span><span class="p">,</span>
+</span><span id="__span-5-242"><a id="__codelineno-5-242" name="__codelineno-5-242"></a>        <span class="n">column_config</span><span class="o">=</span><span class="p">{</span>
+</span><span id="__span-5-243"><a id="__codelineno-5-243" name="__codelineno-5-243"></a>            <span class="s2">&quot;Adelie&quot;</span><span class="p">:</span> <span class="n">st</span><span class="o">.</span><span class="n">column_config</span><span class="o">.</span><span class="n">ProgressColumn</span><span class="p">(</span>
+</span><span id="__span-5-244"><a id="__codelineno-5-244" name="__codelineno-5-244"></a>                <span class="s2">&quot;Adelie&quot;</span><span class="p">,</span>
+</span><span id="__span-5-245"><a id="__codelineno-5-245" name="__codelineno-5-245"></a>                <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Adelie&quot;</span><span class="p">,</span>
+</span><span id="__span-5-246"><a id="__codelineno-5-246" name="__codelineno-5-246"></a>                <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%f</span><span class="s2">&quot;</span><span class="p">,</span>
+</span><span id="__span-5-247"><a id="__codelineno-5-247" name="__codelineno-5-247"></a>                <span class="n">width</span><span class="o">=</span><span class="s2">&quot;medium&quot;</span><span class="p">,</span>
+</span><span id="__span-5-248"><a id="__codelineno-5-248" name="__codelineno-5-248"></a>                <span class="n">min_value</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+</span><span id="__span-5-249"><a id="__codelineno-5-249" name="__codelineno-5-249"></a>                <span class="n">max_value</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+</span><span id="__span-5-250"><a id="__codelineno-5-250" name="__codelineno-5-250"></a>            <span class="p">),</span>
+</span><span id="__span-5-251"><a id="__codelineno-5-251" name="__codelineno-5-251"></a>            <span class="s2">&quot;Chinstrap&quot;</span><span class="p">:</span> <span class="n">st</span><span class="o">.</span><span class="n">column_config</span><span class="o">.</span><span class="n">ProgressColumn</span><span class="p">(</span>
+</span><span id="__span-5-252"><a id="__codelineno-5-252" name="__codelineno-5-252"></a>                <span class="s2">&quot;Chinstrap&quot;</span><span class="p">,</span>
+</span><span id="__span-5-253"><a id="__codelineno-5-253" name="__codelineno-5-253"></a>                <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Chinstrap&quot;</span><span class="p">,</span>
+</span><span id="__span-5-254"><a id="__codelineno-5-254" name="__codelineno-5-254"></a>                <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%f</span><span class="s2">&quot;</span><span class="p">,</span>
+</span><span id="__span-5-255"><a id="__codelineno-5-255" name="__codelineno-5-255"></a>                <span class="n">width</span><span class="o">=</span><span class="s2">&quot;medium&quot;</span><span class="p">,</span>
+</span><span id="__span-5-256"><a id="__codelineno-5-256" name="__codelineno-5-256"></a>                <span class="n">min_value</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+</span><span id="__span-5-257"><a id="__codelineno-5-257" name="__codelineno-5-257"></a>                <span class="n">max_value</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+</span><span id="__span-5-258"><a id="__codelineno-5-258" name="__codelineno-5-258"></a>            <span class="p">),</span>
+</span><span id="__span-5-259"><a id="__codelineno-5-259" name="__codelineno-5-259"></a>            <span class="s2">&quot;Gentoo&quot;</span><span class="p">:</span> <span class="n">st</span><span class="o">.</span><span class="n">column_config</span><span class="o">.</span><span class="n">ProgressColumn</span><span class="p">(</span>
+</span><span id="__span-5-260"><a id="__codelineno-5-260" name="__codelineno-5-260"></a>                <span class="s2">&quot;Gentoo&quot;</span><span class="p">,</span>
+</span><span id="__span-5-261"><a id="__codelineno-5-261" name="__codelineno-5-261"></a>                <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Gentoo&quot;</span><span class="p">,</span>
+</span><span id="__span-5-262"><a id="__codelineno-5-262" name="__codelineno-5-262"></a>                <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%f</span><span class="s2">&quot;</span><span class="p">,</span>
+</span><span id="__span-5-263"><a id="__codelineno-5-263" name="__codelineno-5-263"></a>                <span class="n">width</span><span class="o">=</span><span class="s2">&quot;medium&quot;</span><span class="p">,</span>
+</span><span id="__span-5-264"><a id="__codelineno-5-264" name="__codelineno-5-264"></a>                <span class="n">min_value</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+</span><span id="__span-5-265"><a id="__codelineno-5-265" name="__codelineno-5-265"></a>                <span class="n">max_value</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+</span><span id="__span-5-266"><a id="__codelineno-5-266" name="__codelineno-5-266"></a>            <span class="p">),</span>
+</span><span id="__span-5-267"><a id="__codelineno-5-267" name="__codelineno-5-267"></a>        <span class="p">},</span>
+</span><span id="__span-5-268"><a id="__codelineno-5-268" name="__codelineno-5-268"></a>        <span class="n">hide_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+</span><span id="__span-5-269"><a id="__codelineno-5-269" name="__codelineno-5-269"></a>    <span class="p">)</span>
+</span><span id="__span-5-270"><a id="__codelineno-5-270" name="__codelineno-5-270"></a>
+</span><span id="__span-5-271"><a id="__codelineno-5-271" name="__codelineno-5-271"></a><span class="c1"># display the prediction</span>
+</span><span id="__span-5-272"><a id="__codelineno-5-272" name="__codelineno-5-272"></a><span class="n">st</span><span class="o">.</span><span class="n">subheader</span><span class="p">(</span><span class="s2">&quot;Predicted Species&quot;</span><span class="p">)</span>
+</span><span id="__span-5-273"><a id="__codelineno-5-273" name="__codelineno-5-273"></a><span class="n">st</span><span class="o">.</span><span class="n">success</span><span class="p">(</span><span class="n">p_cols</span><span class="p">[</span><span class="n">prediction</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
+</span></code></pre></div></td></tr></table></div>
+<h4 id="building-the-application-container-image">Building the Application Container Image<a class="headerlink" href="#building-the-application-container-image" title="Permanent link">&para;</a></h4>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>This uses the <code>docker</code> daemon, if you have not installed this yet, please install <a href="https://www.docker.com/products/docker-desktop/">Docker</a> before proceeding further.</p>
+</div>
+<p>Let us login to the SPCS image registry,</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>snow<span class="w"> </span>spcs<span class="w"> </span>image-registry<span class="w"> </span>login
+</span></code></pre></div>
+<p>Let us build, tag and push the <code>$IMAGE_REPO/penguins_app</code>  to the <code>$IMAGE_REGISTRY_URL</code>,</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>docker<span class="w"> </span>build<span class="w"> </span>--push<span class="w">  </span>--platform<span class="o">=</span>linux/amd64<span class="w"> </span>-t<span class="w"> </span><span class="nv">$IMAGE_REPO</span>/penguins_app<span class="w"> </span>.
+</span></code></pre></div>
+<p>Let us list all images in repository <code>st_ml_apps</code>,</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>snow<span class="w"> </span>spcs<span class="w"> </span>image-repository<span class="w"> </span>list-images<span class="w"> </span>st_ml_apps<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">  </span>--database<span class="o">=</span><span class="s1">&#39;st_ml_app&#39;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">  </span>--schema<span class="o">=</span><span class="s1">&#39;images&#39;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">  </span>--role<span class="o">=</span><span class="s1">&#39;st_ml_app&#39;</span>
+</span></code></pre></div>
+<p>Let us export the image FQN to a variable for easy reference and substitution,</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">IMAGE_REPO_NAME</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$IMAGE_REPO</span><span class="s2">/penguins_app&quot;</span>
+</span></code></pre></div>
+<h3 id="deploy-service">Deploy Service<a class="headerlink" href="#deploy-service" title="Permanent link">&para;</a></h3>
+<p>Create a SPCS service specification file,</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Replace <code>$IMAGE_REPO_NAME</code> with actual value. If you are on Linux/macOS you can use <a href="https://www.gnu.org/software/gettext/manual/html_node/envsubst-Invocation.html">envsubst</a> like,</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="w">    </span>cat<span class="w"> </span><span class="s">&lt;&lt;EOF | tee work/service-spec.yaml</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="s">spec:</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="s">    containers:</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="s">    - name: st-ml-app</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="s">        image: $IMAGE_REPO_NAME</span>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="s">        env:</span>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="s">        SNOWFLAKE_WAREHOUSE: st_ml_app_spcs_wh_s</span>
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="s">        readinessProbe:</span>
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="s">            port: 8080</span>
+</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="s">            path: /</span>
+</span><span id="__span-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="s">    endpoint:</span>
+</span><span id="__span-10-12"><a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="s">    - name: st-ml-app</span>
+</span><span id="__span-10-13"><a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a><span class="s">        port: 8080</span>
+</span><span id="__span-10-14"><a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a><span class="s">        public: true</span>
+</span><span id="__span-10-15"><a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a><span class="s">EOF</span>
+</span></code></pre></div>
+</div>
+<p>Create a new directory named <code>work</code> and create the following file in it,</p>
+<div class="language-yaml highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">service-spec.yaml</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-11-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-11-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-11-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-11-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-11-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-11-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-11-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-11-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-11-10">10</a></span>
+<span class="normal"><a href="#__codelineno-11-11">11</a></span>
+<span class="normal"><a href="#__codelineno-11-12">12</a></span>
+<span class="normal"><a href="#__codelineno-11-13">13</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="nt">spec</span><span class="p">:</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2"></a><span class="w">  </span><span class="nt">containers</span><span class="p">:</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">st-ml-app</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4"></a><span class="hll"><span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">image</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$IMAGE_REPO_NAME</span>
+</span></span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5"></a><span class="hll"><span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">env</span><span class="p p-Indicator">:</span>
+</span></span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6"></a><span class="hll"><span class="w">          </span><span class="nt">SNOWFLAKE_WAREHOUSE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">st_ml_app_spcs_wh_s</span><span class="w">        </span>
+</span></span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7"></a><span class="w">      </span><span class="w w-Error">  </span><span class="nt">readinessProbe</span><span class="p">:</span>
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8"></a><span class="w">          </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8080</span>
+</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9"></a><span class="w">          </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/</span>
+</span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10"></a><span class="w">  </span><span class="nt">endpoint</span><span class="p">:</span>
+</span><span id="__span-11-11"><a id="__codelineno-11-11" name="__codelineno-11-11"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">st-ml-app</span>
+</span><span id="__span-11-12"><a id="__codelineno-11-12" name="__codelineno-11-12"></a><span class="w">      </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8080</span>
+</span><span id="__span-11-13"><a id="__codelineno-11-13" name="__codelineno-11-13"></a><span class="w">      </span><span class="nt">public</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</span></code></pre></div></td></tr></table></div>
+<p>Create a Service,</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>snow<span class="w"> </span>spcs<span class="w"> </span>service<span class="w"> </span>create<span class="w"> </span>st_ml_app<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">  </span>--compute-pool<span class="o">=</span><span class="nv">$ST_ML_APP_COMPUTE_POOL</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="w">  </span>--spec-path<span class="o">=</span>work/service-spec.yaml<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="w">  </span>--if-not-exists<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="w">  </span>--database<span class="o">=</span><span class="s1">&#39;st_ml_app&#39;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="w">  </span>--schema<span class="o">=</span><span class="s1">&#39;images&#39;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="w">  </span>--role<span class="o">=</span><span class="s1">&#39;st_ml_app&#39;</span>
+</span></code></pre></div>
+<h4 id="service-status">Service Status<a class="headerlink" href="#service-status" title="Permanent link">&para;</a></h4>
+<p>Check service status,</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It will take a few minutes for the service to be in <code>RUNNING</code> status:</p>
+</div>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>snow<span class="w"> </span>spcs<span class="w"> </span>service<span class="w"> </span>describe<span class="w"> </span>st_ml_app<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="w">  </span>--database<span class="o">=</span><span class="s1">&#39;st_ml_app&#39;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="w">  </span>--schema<span class="o">=</span><span class="s1">&#39;images&#39;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="w">  </span>--role<span class="o">=</span><span class="s1">&#39;st_ml_app&#39;</span><span class="se">\</span>
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="w">  </span>--format<span class="w"> </span>json<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span><span class="s1">&#39;.[0].status&#39;</span>
+</span></code></pre></div>
+<h4 id="service-endpoints">Service Endpoints<a class="headerlink" href="#service-endpoints" title="Permanent link">&para;</a></h4>
+<p>List the service endpoint for the service <code>st_ml_app</code>,</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It will take few minutes for the Endpoint URL to be ready.</p>
+</div>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>snow<span class="w"> </span>spcs<span class="w"> </span>service<span class="w"> </span>list-endpoints<span class="w"> </span>st_ml_app<span class="w">  </span><span class="se">\</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="w">  </span>--database<span class="o">=</span><span class="s1">&#39;st_ml_app&#39;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="w">  </span>--schema<span class="o">=</span><span class="s1">&#39;images&#39;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="w">  </span>--role<span class="o">=</span><span class="s1">&#39;st_ml_app&#39;</span><span class="w"> </span>--format<span class="o">=</span>json<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span><span class="s1">&#39;.[0].ingress_url&#39;</span>
+</span></code></pre></div>
+<p>Open the application using the URL from the previous command, authenticate to access the Penguins ML application.</p>
+<h2 id="cleanup">Cleanup<a class="headerlink" href="#cleanup" title="Permanent link">&para;</a></h2>
+<p>To clean up the services created as part of this demo run the cell <code>spcs_cleanup</code> on the notebook.</p>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
+<h3 id="quickstarts">Quickstarts<a class="headerlink" href="#quickstarts" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="https://quickstarts.snowflake.com/guide/getting-started-with-snowflake-cli/#0">Snowflake Developers::Quickstart</a></li>
+<li><a href="https://youtu.be/ooyZh56NePA?si=3yV3s2z9YwPWVJc-">Snowflake Developers::Getting Started With Snowflake CLI</a></li>
+<li><a href="https://quickstarts.snowflake.com/guide/intro_to_snowpark_container_services/index.html?index=../..index#0">Intro to Snowpark Container Services</a></li>
+<li><a href="https://quickstarts.snowflake.com/guide/build_a_data_app_and_run_it_on_Snowpark_container_services/index.html?index=../..index#0">Build a Data App and run it on Snowpark Container Services</a></li>
+</ul>
+<h3 id="documentation">Documentation<a class="headerlink" href="#documentation" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="https://docs.snowflake.com/en/developer-guide/snowflake-cli-v2/index">Snowflake CLI</a></li>
+<li><a href="https://docs.snowflake.com/en/sql-reference/sql/execute-immediate-from">Execute Immediate Jinja Templating</a></li>
+<li><a href="https://docs.snowflake.com/en/developer-guide/snowpark-container-services/overview">Snowpark Container Services</a></li>
+<li><a href="https://docs.snowflake.com/en/sql-reference/sql/create-compute-pool">https://docs.snowflake.com/en/sql-reference/sql/create-compute-pool</a></li>
+<li><a href="https://docs.snowflake.com/en/developer-guide/snowpark-container-services/specification-reference">https://docs.snowflake.com/en/developer-guide/snowpark-container-services/specification-reference</a></li>
+</ul>
+<h3 id="tutorials">Tutorials<a class="headerlink" href="#tutorials" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="https://docs.snowflake.com/en/developer-guide/snowpark-container-services/overview-tutorials">Snowpark Container Services Tutorial</a></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../snowflake_deploy/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Deploy to Snowflake">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Deploy to Snowflake
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../summary/" class="md-footer__link md-footer__link--next" aria-label="Next: Summary">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Summary
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy", "content.code.select", "content.code.annotate", "navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.footer", "toc.follow"], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.88dd0f4e.min.js"></script>
+      
+    
+  </body>
+</html>
